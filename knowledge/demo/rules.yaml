@@ -1,0 +1,29 @@
+fixture: true
+rules:
+  - code: DEMO-R1
+    interaction_type: irritation_concern
+    severity: caution
+    side_a: [{function_class: demo-retinoid-class}]
+    side_b: [{function_class: demo-exfoliant-class}]
+    mechanism_summary: "DEMO rule: demo retinoid-class with demo exfoliant-class"
+    practical_guidance: "DEMO guidance (fictional): consider using these on different evenings."
+    explanation_template: "{a_ingredients} in {product_a} and {b_ingredients} in {product_b} match fictional demo rule DEMO-R1."
+    evidence_ids: [DEMO-EV-1]
+  - code: DEMO-R2
+    interaction_type: duplicate_active_load
+    severity: caution
+    side_a: [{function_class: demo-exfoliant-class}]
+    side_b: [{function_class: demo-exfoliant-class}]
+    mechanism_summary: "DEMO rule: two demo exfoliant-class products"
+    practical_guidance: "DEMO guidance (fictional): one exfoliating product may be enough."
+    explanation_template: "{a_ingredients} and {b_ingredients} are both fictional demo exfoliants."
+    evidence_ids: [DEMO-EV-2]
+  - code: DEMO-R3
+    interaction_type: formulation_conflict
+    severity: strong_caution
+    side_a: [{ingredient: demo-peroxide-z}]
+    side_b: [{function_class: demo-retinoid-class}]
+    mechanism_summary: "DEMO rule: Demo Peroxide-Z with a demo retinoid"
+    practical_guidance: "DEMO guidance (fictional): reconsider combining these."
+    explanation_template: "{a_ingredients} in {product_a} with {b_ingredients} in {product_b} match fictional rule DEMO-R3."
+    evidence_ids: [DEMO-EV-3]

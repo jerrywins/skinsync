@@ -1,0 +1,21 @@
+# FICTIONAL TEST DATA. Not science. Never loadable as real knowledge.
+fixture: true
+rules:
+  - code: FIX-R1
+    interaction_type: irritation_concern
+    severity: caution
+    side_a: [{ingredient: test-active-a}]
+    side_b: [{ingredient: test-exfoliant-b}]
+    mechanism_summary: "Fixture rule: TEST_ACTIVE_A with TEST_EXFOLIANT_B"
+    practical_guidance: "Fixture guidance: this is test text."
+    explanation_template: "{a_ingredients} in {product_a} and {b_ingredients} in {product_b} match fixture rule FIX-R1."
+    evidence_ids: [EV-FIX-001]
+  - code: FIX-R2
+    interaction_type: duplicate_active_load
+    severity: strong_caution
+    side_a: [{function_class: test-strong-class}]
+    side_b: [{function_class: test-strong-class}]
+    mechanism_summary: "Fixture rule: two test-strong-class ingredients"
+    practical_guidance: "Fixture guidance: this is test text."
+    explanation_template: "{a_ingredients} and {b_ingredients} share fixture class test-strong-class."
+    evidence_ids: [EV-FIX-002]

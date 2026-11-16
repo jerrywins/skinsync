@@ -1,0 +1,28 @@
+# Reverse proxy: one origin for web + API (first-party cookies), security headers, gzip.
+# SITE_ADDRESS=:80 for local; set a domain (e.g. skinsync.example.org) in prod for automatic HTTPS.
+{$SITE_ADDRESS::80} {
+	encode zstd gzip
+
+	header {
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		X-Frame-Options "DENY"
+		-Server
+	}
+	@https expression {scheme} == "https"
+	header @https Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+	# Metrics are internal only.
+	@metrics path /api/v1/metrics
+	respond @metrics 404
+
+	handle /api/* {
+		request_body {
+			max_size 10MB
+		}
+		reverse_proxy api:8000
+	}
+	handle {
+		reverse_proxy web:3000
+	}
+}

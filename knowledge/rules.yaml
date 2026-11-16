@@ -1,0 +1,93 @@
+# SkinSync interaction rules. Schema: docs/data-governance.md.
+# DRAFTED BY CLAUDE (AI) FROM THE SOURCES IN evidence.yaml. Every rule is `review_status: draft`.
+# The admin console refuses to publish a version while any rule is not `reviewed`.
+# A qualified reviewer must check wording, severity, scope and the REVIEWER DECISION notes, then change
+# review_status to `reviewed` and set last_reviewed.
+#
+# Note: lists of terms on one side mean "any of these". Rules are symmetric.
+rules:
+  - code: R-0001
+    interaction_type: formulation_conflict
+    severity: caution
+    side_a: [{ingredient: tretinoin}]
+    side_b: [{ingredient: benzoyl-peroxide}]
+    mechanism_summary: "Benzoyl peroxide can break down tretinoin"
+    practical_guidance: >-
+      Applying them at the same time may make the tretinoin less effective. Many people use them at different
+      times of day. Follow the advice of whoever prescribed the tretinoin.
+    explanation_template: >-
+      {a_ingredients} in {product_a} and {b_ingredients} in {product_b}: in a laboratory study, benzoyl peroxide
+      broke down most of the tretinoin within a day when exposed to light.
+    evidence_ids: [EV-0001]
+    review_status: draft
+    # REVIEWER DECISION: severity caution vs info (the evidence concerns effectiveness, not harm).
+
+  - code: R-0002
+    interaction_type: irritation_concern
+    severity: caution
+    side_a:
+      - {ingredient: benzoyl-peroxide}
+      - {ingredient: salicylic-acid, max_position: 10}
+      - {ingredient: sulfur}
+      - {ingredient: resorcinol}
+      - {ingredient: adapalene}
+    side_b:
+      - {ingredient: benzoyl-peroxide}
+      - {ingredient: salicylic-acid, max_position: 10}
+      - {ingredient: sulfur}
+      - {ingredient: resorcinol}
+      - {ingredient: adapalene}
+    mechanism_summary: "Two topical acne actives used together"
+    practical_guidance: >-
+      Dryness and irritation are more likely when two acne treatments are used at the same time. If irritation
+      happens, use only one at a time.
+    explanation_template: >-
+      {product_a} contains {a_ingredients} and {product_b} contains {b_ingredients}. Acne product labels warn that
+      using more than one at a time makes irritation and dryness more likely.
+    evidence_ids: [EV-0002, EV-0003]
+    review_status: draft
+    # REVIEWER DECISION: salicylic acid also appears at low levels for other purposes. max_position 10 is a
+    # placeholder to avoid flagging those; confirm or replace with concentration data.
+
+  - code: R-0003
+    interaction_type: irritation_concern
+    severity: caution
+    side_a: [{ingredient: tretinoin}]
+    side_b:
+      - {ingredient: salicylic-acid, max_position: 10}
+      - {ingredient: sulfur}
+      - {ingredient: resorcinol}
+    mechanism_summary: "Tretinoin with salicylic acid, sulfur or resorcinol"
+    practical_guidance: >-
+      The tretinoin label asks for particular caution with these ingredients. Check with whoever prescribed the
+      tretinoin before combining them.
+    explanation_template: >-
+      {a_ingredients} in {product_a} and {b_ingredients} in {product_b}: the tretinoin prescribing label asks for
+      particular caution with preparations containing sulfur, resorcinol or salicylic acid.
+    evidence_ids: [EV-0004]
+    review_status: draft
+
+  - code: R-0004
+    interaction_type: duplicate_active_load
+    severity: info
+    side_a:
+      - {ingredient: glycolic-acid, max_position: 5}
+      - {ingredient: lactic-acid, max_position: 5}
+      - {ingredient: mandelic-acid, max_position: 5}
+      - {ingredient: salicylic-acid, max_position: 5}
+    side_b:
+      - {ingredient: glycolic-acid, max_position: 5}
+      - {ingredient: lactic-acid, max_position: 5}
+      - {ingredient: mandelic-acid, max_position: 5}
+      - {ingredient: salicylic-acid, max_position: 5}
+    mechanism_summary: "Both products may contain an exfoliating acid"
+    practical_guidance: >-
+      Using two exfoliating products adds up. If your skin gets irritated, cut back to one, and use sunscreen:
+      alpha hydroxy acids increase sun sensitivity.
+    explanation_template: >-
+      {a_ingredients} in {product_a} and {b_ingredients} in {product_b} are exfoliating acids listed near the top
+      of the ingredient list. Stronger exfoliation is linked with more irritation, and AHAs increase sun sensitivity.
+    evidence_ids: [EV-0005]
+    review_status: draft
+    # REVIEWER DECISION: lactic acid is often a low-level pH adjuster; max_position 5 is a placeholder.
+    # Severity info means it is shown as a note and does not change the headline status.

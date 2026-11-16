@@ -1,0 +1,117 @@
+name: CI
+on:
+  push:
+  pull_request:
+
+jobs:
+  api:
+    runs-on: ubuntu-24.04
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env: { POSTGRES_HOST_AUTH_METHOD: trust }
+        ports: ["5432:5432"]
+        options: --health-cmd "pg_isready -U postgres" --health-interval 5s --health-retries 20
+      redis:
+        image: redis:7-alpine
+        ports: ["6379:6379"]
+    defaults: { run: { working-directory: apps/api } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.13" }
+      - run: sudo apt-get update && sudo apt-get install -y tesseract-ocr postgresql-client
+      - run: pip install -r requirements-dev.txt
+      - name: Lint
+        run: ruff check skinsync tests
+      - name: Security (code)
+        run: bandit -q -c pyproject.toml -r skinsync -ll
+      - name: Security (dependencies)
+        run: pip-audit -r requirements.txt
+      - name: Tests with coverage
+        env: { PGHOST: localhost, PGUSER: postgres }
+        run: python -m pytest -q --cov=skinsync --cov-report=term --cov-fail-under=80
+      - name: Engine branch coverage must be 100%
+        run: python -m pytest -q tests/test_compatibility.py --cov=skinsync.domain.compatibility --cov-branch --cov-fail-under=100
+      - name: OpenAPI schema is up to date
+        run: |
+          python -c "import json;from skinsync.main import app;json.dump(app.openapi(),open('/tmp/openapi.json','w'),indent=1)"
+          diff -q /tmp/openapi.json openapi.json
+
+  web:
+    runs-on: ubuntu-24.04
+    defaults: { run: { working-directory: apps/web } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: npm, cache-dependency-path: apps/web/package-lock.json }
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npm audit --audit-level=high --omit=dev
+      - run: npm run build
+
+  e2e:
+    needs: [api, web]
+    runs-on: ubuntu-24.04
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env: { POSTGRES_HOST_AUTH_METHOD: trust }
+        ports: ["5432:5432"]
+        options: --health-cmd "pg_isready -U postgres" --health-interval 5s --health-retries 20
+      redis:
+        image: redis:7-alpine
+        ports: ["6379:6379"]
+    env:
+      SKINSYNC_DATABASE_URL: postgresql+psycopg://postgres@localhost:5432/skinsync
+      SKINSYNC_DEMO_MODE: "true"
+      SKINSYNC_QUEUE_SYNC: "1"
+      SKINSYNC_ADMIN_PASSWORD: Adm1n-strong-passphrase
+      SKINSYNC_USER_PASSWORD: E2e-Strong-Passphrase-1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.13" }
+      - uses: actions/setup-node@v4
+        with: { node-version: 24 }
+      - run: sudo apt-get update && sudo apt-get install -y tesseract-ocr postgresql-client
+      - name: API
+        working-directory: apps/api
+        run: |
+          pip install -r requirements.txt
+          psql -h localhost -U postgres -c "create database skinsync"
+          alembic upgrade head
+          export SKINSYNC_KNOWLEDGE_DIR=$GITHUB_WORKSPACE/knowledge
+          python -m skinsync.cli bootstrap && python -m skinsync.cli seed-demo
+          python -m skinsync.cli create-admin admin@example.com && python -m skinsync.cli create-user e2e@example.com
+          nohup uvicorn skinsync.main:app --port 8000 > /tmp/api.log 2>&1 &
+      - name: Web
+        working-directory: apps/web
+        run: |
+          npm ci && npx playwright install --with-deps chromium
+          API_INTERNAL_URL=http://127.0.0.1:8000 npm run build
+          cp -r .next/static .next/standalone/.next/static && cp -r public .next/standalone/public
+          (cd .next/standalone && PORT=3000 HOSTNAME=127.0.0.1 API_INTERNAL_URL=http://127.0.0.1:8000 nohup node server.js > /tmp/web.log 2>&1 &)
+          sleep 5 && npx playwright test
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with: { name: e2e-report, path: apps/web/e2e-report }
+
+  secrets-and-images:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: Secret scan
+        uses: gitleaks/gitleaks-action@v2
+        env: { GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+      - name: Build images
+        run: |
+          docker build -f apps/api/Dockerfile -t skinsync-api:ci .
+          docker build -f apps/web/Dockerfile -t skinsync-web:ci .
+      - name: Image scan (fail on HIGH/CRITICAL)
+        uses: aquasecurity/trivy-action@0.28.0
+        with: { image-ref: skinsync-api:ci, severity: "HIGH,CRITICAL", exit-code: "1", ignore-unfixed: true }
+      - name: Image scan web
+        uses: aquasecurity/trivy-action@0.28.0
+        with: { image-ref: skinsync-web:ci, severity: "HIGH,CRITICAL", exit-code: "1", ignore-unfixed: true }

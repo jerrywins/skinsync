@@ -1,0 +1,9 @@
+# FICTIONAL TEST DATA. Real INCI names are deliberately not used.
+fixture: true
+ingredients:
+  - {id: test-base-water, inci_name: TEST_BASE_WATER, aliases: [test water, TEST AQUA], source: fixture}
+  - {id: test-active-a, inci_name: TEST_ACTIVE_A, aliases: [test active alpha], function_classes: [test-active-class], source: fixture}
+  - {id: test-exfoliant-b, inci_name: TEST_EXFOLIANT_B, function_classes: [test-exfoliant-class], source: fixture}
+  - {id: test-strong-c, inci_name: TEST_STRONG_C, function_classes: [test-strong-class], source: fixture}
+  - {id: test-strong-d, inci_name: TEST_STRONG_D, function_classes: [test-strong-class], source: fixture}
+  - {id: test-humectant-e, inci_name: TEST_HUMECTANT_E, source: fixture}

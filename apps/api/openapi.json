@@ -1,0 +1,4434 @@
+{
+ "openapi": "3.1.0",
+ "info": {
+  "title": "SkinSync API",
+  "description": "Evidence-aware skincare decision support. Not a medical device; no diagnosis.",
+  "version": "0.1.0"
+ },
+ "paths": {
+  "/api/v1/health": {
+   "get": {
+    "tags": [
+     "health"
+    ],
+    "summary": "Health",
+    "operationId": "health_api_v1_health_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/ready": {
+   "get": {
+    "tags": [
+     "health"
+    ],
+    "summary": "Ready",
+    "operationId": "ready_api_v1_ready_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/auth/csrf": {
+   "get": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Csrf",
+    "operationId": "csrf_api_v1_auth_csrf_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/auth/signup": {
+   "post": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Signup",
+    "operationId": "signup_api_v1_auth_signup_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/SignupIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "202": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/auth/login": {
+   "post": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Login",
+    "operationId": "login_api_v1_auth_login_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/LoginIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/auth/refresh": {
+   "post": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Refresh",
+    "operationId": "refresh_api_v1_auth_refresh_post",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/auth/logout": {
+   "post": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Logout",
+    "operationId": "logout_api_v1_auth_logout_post",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/auth/verify-email": {
+   "post": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Verify Email",
+    "operationId": "verify_email_api_v1_auth_verify_email_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/TokenIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/auth/resend-verification": {
+   "post": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Resend Verification",
+    "operationId": "resend_verification_api_v1_auth_resend_verification_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/EmailIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "202": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/auth/request-password-reset": {
+   "post": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Request Reset",
+    "operationId": "request_reset_api_v1_auth_request_password_reset_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/EmailIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "202": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/auth/reset-password": {
+   "post": {
+    "tags": [
+     "auth"
+    ],
+    "summary": "Reset Password",
+    "operationId": "reset_password_api_v1_auth_reset_password_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ResetIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/me": {
+   "get": {
+    "tags": [
+     "me"
+    ],
+    "summary": "Me",
+    "operationId": "me_api_v1_me_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     }
+    }
+   },
+   "delete": {
+    "tags": [
+     "me"
+    ],
+    "summary": "Delete Account",
+    "description": "FR-20 / US-010: re-authenticate, then delete every personal row and every stored image.",
+    "operationId": "delete_account_api_v1_me_delete",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/DeleteIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/me/profile": {
+   "put": {
+    "tags": [
+     "me"
+    ],
+    "summary": "Update Profile",
+    "operationId": "update_profile_api_v1_me_profile_put",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ProfileIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/me/consents": {
+   "post": {
+    "tags": [
+     "me"
+    ],
+    "summary": "Consent",
+    "operationId": "consent_api_v1_me_consents_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ConsentIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/me/claim": {
+   "post": {
+    "tags": [
+     "me"
+    ],
+    "summary": "Claim",
+    "operationId": "claim_api_v1_me_claim_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ClaimIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/shelf": {
+   "get": {
+    "tags": [
+     "me"
+    ],
+    "summary": "Shelf",
+    "operationId": "shelf_api_v1_shelf_get",
+    "parameters": [
+     {
+      "name": "q",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Q"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   },
+   "post": {
+    "tags": [
+     "me"
+    ],
+    "summary": "Add To Shelf",
+    "operationId": "add_to_shelf_api_v1_shelf_post",
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ShelfIn"
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/shelf/{product_id}": {
+   "delete": {
+    "tags": [
+     "me"
+    ],
+    "summary": "Remove From Shelf",
+    "operationId": "remove_from_shelf_api_v1_shelf__product_id__delete",
+    "parameters": [
+     {
+      "name": "product_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Product Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/routines": {
+   "get": {
+    "tags": [
+     "me"
+    ],
+    "summary": "Routines",
+    "operationId": "routines_api_v1_routines_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     }
+    }
+   },
+   "post": {
+    "tags": [
+     "me"
+    ],
+    "summary": "Create Routine",
+    "operationId": "create_routine_api_v1_routines_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/RoutineIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/routines/{routine_id}": {
+   "get": {
+    "tags": [
+     "me"
+    ],
+    "summary": "Get Routine",
+    "operationId": "get_routine_api_v1_routines__routine_id__get",
+    "parameters": [
+     {
+      "name": "routine_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Routine Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   },
+   "put": {
+    "tags": [
+     "me"
+    ],
+    "summary": "Update Routine",
+    "operationId": "update_routine_api_v1_routines__routine_id__put",
+    "parameters": [
+     {
+      "name": "routine_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Routine Id"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/RoutineIn"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   },
+   "delete": {
+    "tags": [
+     "me"
+    ],
+    "summary": "Delete Routine",
+    "operationId": "delete_routine_api_v1_routines__routine_id__delete",
+    "parameters": [
+     {
+      "name": "routine_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Routine Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/routines/{routine_id}/analyze": {
+   "post": {
+    "tags": [
+     "me"
+    ],
+    "summary": "Analyze Routine",
+    "description": "SC-04: pairwise compatibility, duplicated actives/ingredients, missing data. Missing data is never 'clear'.",
+    "operationId": "analyze_routine_api_v1_routines__routine_id__analyze_post",
+    "parameters": [
+     {
+      "name": "routine_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Routine Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/history": {
+   "get": {
+    "tags": [
+     "me"
+    ],
+    "summary": "History",
+    "operationId": "history_api_v1_history_get",
+    "parameters": [
+     {
+      "name": "kind",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "enum": [
+        "all",
+        "comparison",
+        "skin_analysis",
+        "alternative_search"
+       ],
+       "type": "string",
+       "default": "all",
+       "title": "Kind"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/history/{kind}/{item_id}": {
+   "delete": {
+    "tags": [
+     "me"
+    ],
+    "summary": "Delete History",
+    "operationId": "delete_history_api_v1_history__kind___item_id__delete",
+    "parameters": [
+     {
+      "name": "kind",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "enum": [
+        "comparison",
+        "alternative_search"
+       ],
+       "type": "string",
+       "title": "Kind"
+      }
+     },
+     {
+      "name": "item_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Item Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/products": {
+   "get": {
+    "tags": [
+     "catalog"
+    ],
+    "summary": "List Products",
+    "operationId": "list_products_api_v1_products_get",
+    "parameters": [
+     {
+      "name": "q",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string",
+         "maxLength": 120
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Q"
+      }
+     },
+     {
+      "name": "brand",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string",
+         "maxLength": 80
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Brand"
+      }
+     },
+     {
+      "name": "category",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string",
+         "maxLength": 40
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Category"
+      }
+     },
+     {
+      "name": "ingredient",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string",
+         "maxLength": 120
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Ingredient"
+      }
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 50,
+       "minimum": 1,
+       "default": 20,
+       "title": "Limit"
+      }
+     },
+     {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 5000,
+       "minimum": 0,
+       "default": 0,
+       "title": "Offset"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/products/barcode/{code}": {
+   "get": {
+    "tags": [
+     "catalog"
+    ],
+    "summary": "By Barcode",
+    "operationId": "by_barcode_api_v1_products_barcode__code__get",
+    "parameters": [
+     {
+      "name": "code",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Code"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/products/{ref}": {
+   "get": {
+    "tags": [
+     "catalog"
+    ],
+    "summary": "Product Detail",
+    "operationId": "product_detail_api_v1_products__ref__get",
+    "parameters": [
+     {
+      "name": "ref",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Ref"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/brands/{slug}": {
+   "get": {
+    "tags": [
+     "catalog"
+    ],
+    "summary": "Brand",
+    "operationId": "brand_api_v1_brands__slug__get",
+    "parameters": [
+     {
+      "name": "slug",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Slug"
+      }
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 100,
+       "minimum": 1,
+       "default": 50,
+       "title": "Limit"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/categories": {
+   "get": {
+    "tags": [
+     "catalog"
+    ],
+    "summary": "Categories",
+    "operationId": "categories_api_v1_categories_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/ingredients": {
+   "get": {
+    "tags": [
+     "catalog"
+    ],
+    "summary": "List Ingredients",
+    "operationId": "list_ingredients_api_v1_ingredients_get",
+    "parameters": [
+     {
+      "name": "q",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string",
+         "maxLength": 120
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Q"
+      }
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 100,
+       "minimum": 1,
+       "default": 30,
+       "title": "Limit"
+      }
+     },
+     {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 5000,
+       "minimum": 0,
+       "default": 0,
+       "title": "Offset"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/ingredients/{ingredient_id}": {
+   "get": {
+    "tags": [
+     "catalog"
+    ],
+    "summary": "Ingredient Detail",
+    "operationId": "ingredient_detail_api_v1_ingredients__ingredient_id__get",
+    "parameters": [
+     {
+      "name": "ingredient_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Ingredient Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/ingredients/normalize": {
+   "post": {
+    "tags": [
+     "catalog"
+    ],
+    "summary": "Normalize",
+    "operationId": "normalize_api_v1_ingredients_normalize_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/NormalizeIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/reports": {
+   "post": {
+    "tags": [
+     "catalog"
+    ],
+    "summary": "Report",
+    "operationId": "report_api_v1_reports_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ReportIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/comparisons": {
+   "post": {
+    "tags": [
+     "comparisons"
+    ],
+    "summary": "Create",
+    "operationId": "create_api_v1_comparisons_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/CompareIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/comparisons/{comparison_id}": {
+   "get": {
+    "tags": [
+     "comparisons"
+    ],
+    "summary": "Read",
+    "operationId": "read_api_v1_comparisons__comparison_id__get",
+    "parameters": [
+     {
+      "name": "comparison_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Comparison Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/comparisons/{comparison_id}/save": {
+   "post": {
+    "tags": [
+     "comparisons"
+    ],
+    "summary": "Save",
+    "operationId": "save_api_v1_comparisons__comparison_id__save_post",
+    "parameters": [
+     {
+      "name": "comparison_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Comparison Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/alternatives/search": {
+   "post": {
+    "tags": [
+     "alternatives"
+    ],
+    "summary": "Search",
+    "operationId": "search_api_v1_alternatives_search_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/SearchIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/alternatives/{search_id}": {
+   "get": {
+    "tags": [
+     "alternatives"
+    ],
+    "summary": "Get Search",
+    "operationId": "get_search_api_v1_alternatives__search_id__get",
+    "parameters": [
+     {
+      "name": "search_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Search Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/alternatives/{search_id}/save": {
+   "post": {
+    "tags": [
+     "alternatives"
+    ],
+    "summary": "Save Search",
+    "operationId": "save_search_api_v1_alternatives__search_id__save_post",
+    "parameters": [
+     {
+      "name": "search_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Search Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/skin-analyses": {
+   "post": {
+    "tags": [
+     "skin"
+    ],
+    "summary": "Create",
+    "operationId": "create_api_v1_skin_analyses_post",
+    "requestBody": {
+     "content": {
+      "multipart/form-data": {
+       "schema": {
+        "$ref": "#/components/schemas/Body_create_api_v1_skin_analyses_post"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "202": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/skin-analyses/{analysis_id}": {
+   "get": {
+    "tags": [
+     "skin"
+    ],
+    "summary": "Read",
+    "operationId": "read_api_v1_skin_analyses__analysis_id__get",
+    "parameters": [
+     {
+      "name": "analysis_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Analysis Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   },
+   "delete": {
+    "tags": [
+     "skin"
+    ],
+    "summary": "Delete",
+    "description": "Removes the analysis, observations, recommendations, original image and its upload row.",
+    "operationId": "delete_api_v1_skin_analyses__analysis_id__delete",
+    "parameters": [
+     {
+      "name": "analysis_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Analysis Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/skin-analyses/{analysis_id}/image": {
+   "delete": {
+    "tags": [
+     "skin"
+    ],
+    "summary": "Delete Image",
+    "operationId": "delete_image_api_v1_skin_analyses__analysis_id__image_delete",
+    "parameters": [
+     {
+      "name": "analysis_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Analysis Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/scan/label": {
+   "post": {
+    "tags": [
+     "scan"
+    ],
+    "summary": "Scan Label",
+    "operationId": "scan_label_api_v1_scan_label_post",
+    "requestBody": {
+     "content": {
+      "multipart/form-data": {
+       "schema": {
+        "$ref": "#/components/schemas/Body_scan_label_api_v1_scan_label_post"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "202": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/scan/label/{ocr_id}": {
+   "get": {
+    "tags": [
+     "scan"
+    ],
+    "summary": "Get Scan",
+    "operationId": "get_scan_api_v1_scan_label__ocr_id__get",
+    "parameters": [
+     {
+      "name": "ocr_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Ocr Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/scan/label/{ocr_id}/confirm": {
+   "post": {
+    "tags": [
+     "scan"
+    ],
+    "summary": "Confirm",
+    "operationId": "confirm_api_v1_scan_label__ocr_id__confirm_post",
+    "parameters": [
+     {
+      "name": "ocr_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Ocr Id"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ConfirmIn"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/shares": {
+   "get": {
+    "tags": [
+     "shares"
+    ],
+    "summary": "Mine",
+    "operationId": "mine_api_v1_shares_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     }
+    }
+   },
+   "post": {
+    "tags": [
+     "shares"
+    ],
+    "summary": "Create",
+    "operationId": "create_api_v1_shares_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ShareIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/shares/{share_id}": {
+   "delete": {
+    "tags": [
+     "shares"
+    ],
+    "summary": "Revoke",
+    "operationId": "revoke_api_v1_shares__share_id__delete",
+    "parameters": [
+     {
+      "name": "share_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Share Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/public/shares/{token}": {
+   "get": {
+    "tags": [
+     "shares"
+    ],
+    "summary": "View",
+    "operationId": "view_api_v1_public_shares__token__get",
+    "parameters": [
+     {
+      "name": "token",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Token"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/events": {
+   "post": {
+    "tags": [
+     "analytics"
+    ],
+    "summary": "Track",
+    "operationId": "track_api_v1_events_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/EventIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "202": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/admin/flags": {
+   "get": {
+    "tags": [
+     "admin"
+    ],
+    "summary": "Flags",
+    "operationId": "flags_api_v1_admin_flags_get",
+    "parameters": [
+     {
+      "name": "status",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "enum": [
+        "open",
+        "resolved",
+        "dismissed"
+       ],
+       "type": "string",
+       "default": "open",
+       "title": "Status"
+      }
+     },
+     {
+      "name": "reason",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string",
+         "maxLength": 40
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Reason"
+      }
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 200,
+       "minimum": 1,
+       "default": 50,
+       "title": "Limit"
+      }
+     },
+     {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "minimum": 0,
+       "default": 0,
+       "title": "Offset"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/admin/flags/{flag_id}": {
+   "patch": {
+    "tags": [
+     "admin"
+    ],
+    "summary": "Update Flag",
+    "operationId": "update_flag_api_v1_admin_flags__flag_id__patch",
+    "parameters": [
+     {
+      "name": "flag_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Flag Id"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/FlagUpdate"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/admin/ingredient-mappings": {
+   "post": {
+    "tags": [
+     "admin"
+    ],
+    "summary": "Fix Mapping",
+    "description": "Confirm or correct one normalisation (US-003). Produces a new, current formulation version so\nresults computed on the old mapping stay reproducible and are marked outdated.",
+    "operationId": "fix_mapping_api_v1_admin_ingredient_mappings_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/IngredientFix"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/admin/ingredients": {
+   "post": {
+    "tags": [
+     "admin"
+    ],
+    "summary": "Add Ingredient",
+    "operationId": "add_ingredient_api_v1_admin_ingredients_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/IngredientIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/admin/knowledge-versions": {
+   "get": {
+    "tags": [
+     "admin"
+    ],
+    "summary": "Versions",
+    "operationId": "versions_api_v1_admin_knowledge_versions_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     }
+    }
+   },
+   "post": {
+    "tags": [
+     "admin"
+    ],
+    "summary": "Import Version",
+    "description": "Load the reviewed YAML in knowledge/ as a new DRAFT version. Fixture files are refused.",
+    "operationId": "import_version_api_v1_admin_knowledge_versions_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ImportIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/admin/knowledge-versions/{version_id}": {
+   "get": {
+    "tags": [
+     "admin"
+    ],
+    "summary": "Version Detail",
+    "operationId": "version_detail_api_v1_admin_knowledge_versions__version_id__get",
+    "parameters": [
+     {
+      "name": "version_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Version Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/admin/knowledge-versions/{version_id}/transition": {
+   "post": {
+    "tags": [
+     "admin"
+    ],
+    "summary": "Transition",
+    "operationId": "transition_api_v1_admin_knowledge_versions__version_id__transition_post",
+    "parameters": [
+     {
+      "name": "version_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Version Id"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/TransitionIn"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/admin/audit": {
+   "get": {
+    "tags": [
+     "admin"
+    ],
+    "summary": "Audit Log",
+    "operationId": "audit_log_api_v1_admin_audit_get",
+    "parameters": [
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 500,
+       "minimum": 1,
+       "default": 100,
+       "title": "Limit"
+      }
+     },
+     {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "minimum": 0,
+       "default": 0,
+       "title": "Offset"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/admin/jobs": {
+   "get": {
+    "tags": [
+     "admin"
+    ],
+    "summary": "Failed Jobs",
+    "operationId": "failed_jobs_api_v1_admin_jobs_get",
+    "parameters": [
+     {
+      "name": "status",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "enum": [
+        "failed",
+        "queued",
+        "processing"
+       ],
+       "type": "string",
+       "default": "failed",
+       "title": "Status"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/api/v1/admin/data-quality": {
+   "get": {
+    "tags": [
+     "admin"
+    ],
+    "summary": "Data Quality",
+    "operationId": "data_quality_api_v1_admin_data_quality_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "components": {
+  "schemas": {
+   "Body_create_api_v1_skin_analyses_post": {
+    "properties": {
+     "image": {
+      "type": "string",
+      "contentMediaType": "application/octet-stream",
+      "title": "Image"
+     },
+     "skin_type": {
+      "type": "string",
+      "enum": [
+       "dry",
+       "oily",
+       "combination",
+       "normal",
+       "sensitive",
+       "unsure"
+      ],
+      "title": "Skin Type",
+      "default": "unsure"
+     },
+     "consent": {
+      "type": "boolean",
+      "title": "Consent"
+     },
+     "keep_image": {
+      "type": "boolean",
+      "title": "Keep Image",
+      "default": false
+     }
+    },
+    "type": "object",
+    "required": [
+     "image",
+     "consent"
+    ],
+    "title": "Body_create_api_v1_skin_analyses_post"
+   },
+   "Body_scan_label_api_v1_scan_label_post": {
+    "properties": {
+     "image": {
+      "type": "string",
+      "contentMediaType": "application/octet-stream",
+      "title": "Image"
+     }
+    },
+    "type": "object",
+    "required": [
+     "image"
+    ],
+    "title": "Body_scan_label_api_v1_scan_label_post"
+   },
+   "ClaimIn": {
+    "properties": {
+     "claim_tokens": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "maxItems": 20,
+      "title": "Claim Tokens"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "claim_tokens"
+    ],
+    "title": "ClaimIn"
+   },
+   "CompareIn": {
+    "properties": {
+     "a": {
+      "$ref": "#/components/schemas/ProductSpec"
+     },
+     "b": {
+      "$ref": "#/components/schemas/ProductSpec"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "a",
+     "b"
+    ],
+    "title": "CompareIn"
+   },
+   "ConfirmIn": {
+    "properties": {
+     "text": {
+      "type": "string",
+      "maxLength": 8000,
+      "minLength": 1,
+      "title": "Text"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "text"
+    ],
+    "title": "ConfirmIn"
+   },
+   "ConsentIn": {
+    "properties": {
+     "purpose": {
+      "type": "string",
+      "enum": [
+       "skin_image_processing",
+       "analytics"
+      ],
+      "title": "Purpose"
+     },
+     "granted": {
+      "type": "boolean",
+      "title": "Granted"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "purpose",
+     "granted"
+    ],
+    "title": "ConsentIn"
+   },
+   "DeleteIn": {
+    "properties": {
+     "password": {
+      "type": "string",
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Password"
+     },
+     "confirm": {
+      "type": "string",
+      "const": "DELETE",
+      "title": "Confirm"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "password",
+     "confirm"
+    ],
+    "title": "DeleteIn"
+   },
+   "EmailIn": {
+    "properties": {
+     "email": {
+      "type": "string",
+      "format": "email",
+      "title": "Email"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "email"
+    ],
+    "title": "EmailIn"
+   },
+   "EventIn": {
+    "properties": {
+     "name": {
+      "type": "string",
+      "enum": [
+       "landing_view",
+       "comparison_started",
+       "product_search",
+       "product_selected",
+       "comparison_completed",
+       "skin_analysis_started",
+       "skin_image_uploaded",
+       "skin_image_quality_failed",
+       "skin_analysis_completed",
+       "skin_observation_viewed",
+       "skin_recommendation_clicked",
+       "alternative_search_started",
+       "alternative_product_identified",
+       "alternative_search_completed",
+       "alternative_clicked",
+       "alternative_compared",
+       "ingredient_viewed",
+       "routine_created",
+       "routine_analyzed",
+       "product_saved",
+       "share_created",
+       "share_viewed",
+       "signup_started",
+       "signup_completed"
+      ],
+      "title": "Name"
+     },
+     "consent": {
+      "type": "boolean",
+      "const": true,
+      "title": "Consent"
+     },
+     "session_id": {
+      "type": "string",
+      "maxLength": 64,
+      "minLength": 8,
+      "pattern": "^[A-Za-z0-9-]+$",
+      "title": "Session Id"
+     },
+     "route": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 120,
+        "pattern": "^/[A-Za-z0-9/_\\-\\[\\]]*$"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Route"
+     },
+     "metadata": {
+      "additionalProperties": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "integer"
+        },
+        {
+         "type": "boolean"
+        }
+       ]
+      },
+      "type": "object",
+      "maxProperties": 8,
+      "title": "Metadata"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "name",
+     "consent",
+     "session_id"
+    ],
+    "title": "EventIn"
+   },
+   "FlagUpdate": {
+    "properties": {
+     "status": {
+      "type": "string",
+      "enum": [
+       "resolved",
+       "dismissed"
+      ],
+      "title": "Status"
+     },
+     "note": {
+      "type": "string",
+      "maxLength": 1000,
+      "minLength": 3,
+      "title": "Note"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "status",
+     "note"
+    ],
+    "title": "FlagUpdate"
+   },
+   "HTTPValidationError": {
+    "properties": {
+     "detail": {
+      "items": {
+       "$ref": "#/components/schemas/ValidationError"
+      },
+      "type": "array",
+      "title": "Detail"
+     }
+    },
+    "type": "object",
+    "title": "HTTPValidationError"
+   },
+   "ImportIn": {
+    "properties": {
+     "version_id": {
+      "type": "string",
+      "maxLength": 60,
+      "minLength": 3,
+      "pattern": "^[a-z0-9][a-z0-9.\\-]+$",
+      "title": "Version Id"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "version_id"
+    ],
+    "title": "ImportIn"
+   },
+   "IngredientFix": {
+    "properties": {
+     "product_version_id": {
+      "type": "string",
+      "maxLength": 60,
+      "title": "Product Version Id"
+     },
+     "position": {
+      "type": "integer",
+      "maximum": 500.0,
+      "minimum": 1.0,
+      "title": "Position"
+     },
+     "ingredient_id": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 120
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Ingredient Id"
+     },
+     "reason": {
+      "type": "string",
+      "maxLength": 500,
+      "minLength": 3,
+      "title": "Reason"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "product_version_id",
+     "position",
+     "reason"
+    ],
+    "title": "IngredientFix"
+   },
+   "IngredientIn": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "maxLength": 110,
+      "minLength": 2,
+      "pattern": "^[a-z0-9-]+$",
+      "title": "Id"
+     },
+     "inci_name": {
+      "type": "string",
+      "maxLength": 300,
+      "minLength": 2,
+      "title": "Inci Name"
+     },
+     "aliases": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "maxItems": 30,
+      "title": "Aliases"
+     },
+     "function_classes": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "maxItems": 10,
+      "title": "Function Classes"
+     },
+     "reason": {
+      "type": "string",
+      "maxLength": 500,
+      "minLength": 3,
+      "title": "Reason"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "id",
+     "inci_name",
+     "reason"
+    ],
+    "title": "IngredientIn"
+   },
+   "LoginIn": {
+    "properties": {
+     "email": {
+      "type": "string",
+      "format": "email",
+      "title": "Email"
+     },
+     "password": {
+      "type": "string",
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Password"
+     },
+     "claim_tokens": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "maxItems": 20,
+      "title": "Claim Tokens"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "email",
+     "password"
+    ],
+    "title": "LoginIn"
+   },
+   "Mode": {
+    "enum": [
+     "similar",
+     "cheaper",
+     "premium",
+     "ingredient_focused",
+     "routine_compatible",
+     "sensitive_preference"
+    ],
+    "title": "Mode",
+    "type": "string"
+   },
+   "NormalizeIn": {
+    "properties": {
+     "text": {
+      "type": "string",
+      "maxLength": 8000,
+      "minLength": 1,
+      "title": "Text"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "text"
+    ],
+    "title": "NormalizeIn"
+   },
+   "Preferences": {
+    "properties": {
+     "budget_max_inr": {
+      "anyOf": [
+       {
+        "type": "integer",
+        "maximum": 1000000.0,
+        "minimum": 0.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Budget Max Inr"
+     },
+     "preferred_brands": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "maxItems": 30,
+      "title": "Preferred Brands"
+     },
+     "avoided_brands": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "maxItems": 30,
+      "title": "Avoided Brands"
+     },
+     "avoided_ingredients": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "maxItems": 60,
+      "title": "Avoided Ingredients"
+     },
+     "fragrance_free": {
+      "type": "boolean",
+      "title": "Fragrance Free",
+      "default": false
+     },
+     "routine_complexity": {
+      "anyOf": [
+       {
+        "type": "string",
+        "enum": [
+         "minimal",
+         "standard",
+         "detailed"
+        ]
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Routine Complexity"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "title": "Preferences"
+   },
+   "ProductSpec": {
+    "properties": {
+     "product_id": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 200
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Product Id"
+     },
+     "product_version_id": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 60
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Product Version Id"
+     },
+     "manual_ingredients": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 8000
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Manual Ingredients"
+     },
+     "label": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 120
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Label"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "title": "ProductSpec"
+   },
+   "ProfileIn": {
+    "properties": {
+     "skin_type": {
+      "anyOf": [
+       {
+        "type": "string",
+        "enum": [
+         "dry",
+         "oily",
+         "combination",
+         "normal",
+         "sensitive",
+         "unsure"
+        ]
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Skin Type"
+     },
+     "preferences": {
+      "$ref": "#/components/schemas/Preferences",
+      "default": {
+       "preferred_brands": [],
+       "avoided_brands": [],
+       "avoided_ingredients": [],
+       "fragrance_free": false
+      }
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "title": "ProfileIn"
+   },
+   "ReportIn": {
+    "properties": {
+     "target_type": {
+      "type": "string",
+      "enum": [
+       "product",
+       "product_version",
+       "ingredient",
+       "price",
+       "evidence"
+      ],
+      "title": "Target Type"
+     },
+     "target_ref": {
+      "type": "string",
+      "maxLength": 120,
+      "minLength": 1,
+      "title": "Target Ref"
+     },
+     "message": {
+      "type": "string",
+      "maxLength": 1000,
+      "minLength": 3,
+      "title": "Message"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "target_type",
+     "target_ref",
+     "message"
+    ],
+    "title": "ReportIn"
+   },
+   "ResetIn": {
+    "properties": {
+     "token": {
+      "type": "string",
+      "maxLength": 200,
+      "minLength": 10,
+      "title": "Token"
+     },
+     "password": {
+      "type": "string",
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Password"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "token",
+     "password"
+    ],
+    "title": "ResetIn"
+   },
+   "RoutineIn": {
+    "properties": {
+     "name": {
+      "type": "string",
+      "maxLength": 120,
+      "minLength": 1,
+      "title": "Name"
+     },
+     "time_of_day": {
+      "type": "string",
+      "enum": [
+       "morning",
+       "evening"
+      ],
+      "title": "Time Of Day"
+     },
+     "steps": {
+      "items": {
+       "$ref": "#/components/schemas/RoutineStepIn"
+      },
+      "type": "array",
+      "maxItems": 20,
+      "title": "Steps"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "name",
+     "time_of_day"
+    ],
+    "title": "RoutineIn"
+   },
+   "RoutineStepIn": {
+    "properties": {
+     "product_id": {
+      "type": "string",
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Product Id"
+     },
+     "step_kind": {
+      "anyOf": [
+       {
+        "type": "string",
+        "enum": [
+         "cleanser",
+         "toner",
+         "treatment",
+         "serum",
+         "eye_care",
+         "moisturizer",
+         "sunscreen",
+         "mask",
+         "other"
+        ]
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Step Kind"
+     },
+     "frequency": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 60
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Frequency"
+     },
+     "note": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 1000
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Note"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "product_id"
+    ],
+    "title": "RoutineStepIn"
+   },
+   "SearchIn": {
+    "properties": {
+     "product_id": {
+      "type": "string",
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Product Id"
+     },
+     "mode": {
+      "$ref": "#/components/schemas/Mode",
+      "default": "similar"
+     },
+     "target_ingredients": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "maxItems": 10,
+      "title": "Target Ingredients"
+     },
+     "identification_confidence": {
+      "type": "number",
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Identification Confidence",
+      "default": 1.0
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "product_id"
+    ],
+    "title": "SearchIn"
+   },
+   "ShareIn": {
+    "properties": {
+     "target_type": {
+      "type": "string",
+      "enum": [
+       "comparison",
+       "alternative_search",
+       "routine",
+       "product",
+       "skin_analysis"
+      ],
+      "title": "Target Type"
+     },
+     "target_id": {
+      "type": "string",
+      "maxLength": 60,
+      "minLength": 1,
+      "title": "Target Id"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "target_type",
+     "target_id"
+    ],
+    "title": "ShareIn"
+   },
+   "ShelfIn": {
+    "properties": {
+     "product_id": {
+      "type": "string",
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Product Id"
+     },
+     "status": {
+      "type": "string",
+      "enum": [
+       "owned",
+       "wishlist"
+      ],
+      "title": "Status",
+      "default": "owned"
+     },
+     "note": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 1000
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Note"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "product_id"
+    ],
+    "title": "ShelfIn"
+   },
+   "SignupIn": {
+    "properties": {
+     "email": {
+      "type": "string",
+      "format": "email",
+      "title": "Email"
+     },
+     "password": {
+      "type": "string",
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Password"
+     },
+     "age_confirmed_18": {
+      "type": "boolean",
+      "title": "Age Confirmed 18"
+     },
+     "accept_terms": {
+      "type": "boolean",
+      "title": "Accept Terms"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "email",
+     "password",
+     "age_confirmed_18",
+     "accept_terms"
+    ],
+    "title": "SignupIn"
+   },
+   "TokenIn": {
+    "properties": {
+     "token": {
+      "type": "string",
+      "maxLength": 200,
+      "minLength": 10,
+      "title": "Token"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "token"
+    ],
+    "title": "TokenIn"
+   },
+   "TransitionIn": {
+    "properties": {
+     "to": {
+      "type": "string",
+      "enum": [
+       "in_review",
+       "draft",
+       "published",
+       "retired"
+      ],
+      "title": "To"
+     },
+     "reason": {
+      "type": "string",
+      "maxLength": 500,
+      "minLength": 3,
+      "title": "Reason"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "to",
+     "reason"
+    ],
+    "title": "TransitionIn"
+   },
+   "ValidationError": {
+    "properties": {
+     "loc": {
+      "items": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "integer"
+        }
+       ]
+      },
+      "type": "array",
+      "title": "Location"
+     },
+     "msg": {
+      "type": "string",
+      "title": "Message"
+     },
+     "type": {
+      "type": "string",
+      "title": "Error Type"
+     },
+     "input": {
+      "title": "Input"
+     },
+     "ctx": {
+      "type": "object",
+      "title": "Context"
+     }
+    },
+    "type": "object",
+    "required": [
+     "loc",
+     "msg",
+     "type"
+    ],
+    "title": "ValidationError"
+   },
+   "AlternativesResult": {
+    "additionalProperties": false,
+    "properties": {
+     "reference_id": {
+      "title": "Reference Id",
+      "type": "string"
+     },
+     "mode": {
+      "$ref": "#/components/schemas/Mode"
+     },
+     "results": {
+      "items": {
+       "$ref": "#/components/schemas/RankedAlternative"
+      },
+      "title": "Results",
+      "type": "array"
+     },
+     "excluded": {
+      "additionalProperties": {
+       "type": "integer"
+      },
+      "title": "Excluded",
+      "type": "object"
+     },
+     "reference_price_state": {
+      "$ref": "#/components/schemas/PriceState"
+     },
+     "low_identification_confidence": {
+      "title": "Low Identification Confidence",
+      "type": "boolean"
+     },
+     "weights": {
+      "additionalProperties": {
+       "type": "number"
+      },
+      "title": "Weights",
+      "type": "object"
+     }
+    },
+    "required": [
+     "reference_id",
+     "mode",
+     "results",
+     "excluded",
+     "reference_price_state",
+     "low_identification_confidence",
+     "weights"
+    ],
+    "title": "AlternativesResult",
+    "type": "object"
+   },
+   "ComparisonResult": {
+    "additionalProperties": false,
+    "properties": {
+     "status": {
+      "$ref": "#/components/schemas/CompatibilityStatus"
+     },
+     "status_label": {
+      "title": "Status Label",
+      "type": "string"
+     },
+     "confidence": {
+      "title": "Confidence",
+      "type": "number"
+     },
+     "confidence_level": {
+      "$ref": "#/components/schemas/ConfidenceLevel"
+     },
+     "evidence_strength": {
+      "$ref": "#/components/schemas/EvidenceStrength"
+     },
+     "completeness": {
+      "title": "Completeness",
+      "type": "number"
+     },
+     "findings": {
+      "items": {
+       "$ref": "#/components/schemas/Finding"
+      },
+      "title": "Findings",
+      "type": "array"
+     },
+     "ingredients": {
+      "$ref": "#/components/schemas/IngredientDiff"
+     },
+     "product_version_a": {
+      "title": "Product Version A",
+      "type": "string"
+     },
+     "product_version_b": {
+      "title": "Product Version B",
+      "type": "string"
+     },
+     "knowledge_version": {
+      "title": "Knowledge Version",
+      "type": "string"
+     },
+     "knowledge_is_demo": {
+      "title": "Knowledge Is Demo",
+      "type": "boolean"
+     },
+     "engine_version": {
+      "default": "compat-engine-1.0.0",
+      "title": "Engine Version",
+      "type": "string"
+     }
+    },
+    "required": [
+     "status",
+     "status_label",
+     "confidence",
+     "confidence_level",
+     "evidence_strength",
+     "completeness",
+     "findings",
+     "ingredients",
+     "product_version_a",
+     "product_version_b",
+     "knowledge_version",
+     "knowledge_is_demo"
+    ],
+    "title": "ComparisonResult",
+    "type": "object"
+   },
+   "CompatibilityStatus": {
+    "description": "The five controlled result categories (SkinIQ spec \u00a734).",
+    "enum": [
+     "no_notable_interaction",
+     "caution",
+     "strong_caution",
+     "insufficient_evidence",
+     "data_incomplete"
+    ],
+    "title": "CompatibilityStatus",
+    "type": "string"
+   },
+   "ConcernRecommendation": {
+    "additionalProperties": false,
+    "properties": {
+     "observation": {
+      "title": "Observation",
+      "type": "string"
+     },
+     "concern_category": {
+      "title": "Concern Category",
+      "type": "string"
+     },
+     "ingredient_classes": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Ingredient Classes",
+      "type": "array"
+     },
+     "intended_role": {
+      "title": "Intended Role",
+      "type": "string"
+     },
+     "observation_confidence": {
+      "title": "Observation Confidence",
+      "type": "number"
+     },
+     "evidence_strength": {
+      "$ref": "#/components/schemas/EvidenceStrength"
+     },
+     "evidence_ids": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Evidence Ids",
+      "type": "array"
+     }
+    },
+    "required": [
+     "observation",
+     "concern_category",
+     "ingredient_classes",
+     "intended_role",
+     "observation_confidence",
+     "evidence_strength",
+     "evidence_ids"
+    ],
+    "title": "ConcernRecommendation",
+    "type": "object"
+   },
+   "ConfidenceLevel": {
+    "description": "How certain the system is about an identification or result.\n\nDistinct from EvidenceStrength (spec principle 1.2.3).",
+    "enum": [
+     "high",
+     "moderate",
+     "low"
+    ],
+    "title": "ConfidenceLevel",
+    "type": "string"
+   },
+   "Dimension": {
+    "additionalProperties": false,
+    "properties": {
+     "name": {
+      "title": "Name",
+      "type": "string"
+     },
+     "score": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Score"
+     },
+     "detail": {
+      "title": "Detail",
+      "type": "string"
+     }
+    },
+    "required": [
+     "name",
+     "score",
+     "detail"
+    ],
+    "title": "Dimension",
+    "type": "object"
+   },
+   "EvidenceRef": {
+    "additionalProperties": false,
+    "properties": {
+     "id": {
+      "title": "Id",
+      "type": "string"
+     },
+     "claim": {
+      "title": "Claim",
+      "type": "string"
+     },
+     "citation": {
+      "title": "Citation",
+      "type": "string"
+     },
+     "source_type": {
+      "title": "Source Type",
+      "type": "string"
+     },
+     "strength": {
+      "$ref": "#/components/schemas/EvidenceStrength"
+     }
+    },
+    "required": [
+     "id",
+     "claim",
+     "citation",
+     "source_type",
+     "strength"
+    ],
+    "title": "EvidenceRef",
+    "type": "object"
+   },
+   "EvidenceStrength": {
+    "description": "Strength of the scientific support for a claim. NOT model confidence.",
+    "enum": [
+     "high",
+     "moderate",
+     "limited",
+     "insufficient",
+     "unknown"
+    ],
+    "title": "EvidenceStrength",
+    "type": "string"
+   },
+   "Finding": {
+    "additionalProperties": false,
+    "properties": {
+     "type": {
+      "$ref": "#/components/schemas/FindingType"
+     },
+     "severity": {
+      "$ref": "#/components/schemas/skinsync__domain__enums__Severity"
+     },
+     "title": {
+      "title": "Title",
+      "type": "string"
+     },
+     "explanation": {
+      "title": "Explanation",
+      "type": "string"
+     },
+     "why": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Why",
+      "type": "array"
+     },
+     "practical_guidance": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Practical Guidance"
+     },
+     "rule_code": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Rule Code"
+     },
+     "interaction_type": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Interaction Type"
+     },
+     "a_ingredients": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "A Ingredients",
+      "type": "array"
+     },
+     "b_ingredients": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "B Ingredients",
+      "type": "array"
+     },
+     "confidence": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Confidence",
+      "type": "number"
+     },
+     "confidence_level": {
+      "$ref": "#/components/schemas/ConfidenceLevel"
+     },
+     "evidence_strength": {
+      "$ref": "#/components/schemas/EvidenceStrength"
+     },
+     "evidence": {
+      "default": [],
+      "items": {
+       "$ref": "#/components/schemas/EvidenceRef"
+      },
+      "title": "Evidence",
+      "type": "array"
+     }
+    },
+    "required": [
+     "type",
+     "severity",
+     "title",
+     "explanation",
+     "why",
+     "confidence",
+     "confidence_level",
+     "evidence_strength"
+    ],
+    "title": "Finding",
+    "type": "object"
+   },
+   "FindingType": {
+    "enum": [
+     "rule",
+     "shared_key_active",
+     "unresolved_ingredients",
+     "incomplete_formulation",
+     "insufficient_evidence"
+    ],
+    "title": "FindingType",
+    "type": "string"
+   },
+   "IngredientDiff": {
+    "additionalProperties": false,
+    "properties": {
+     "shared": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Shared",
+      "type": "array"
+     },
+     "a_only": {
+      "items": {
+       "type": "string"
+      },
+      "title": "A Only",
+      "type": "array"
+     },
+     "b_only": {
+      "items": {
+       "type": "string"
+      },
+      "title": "B Only",
+      "type": "array"
+     },
+     "unresolved_a": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Unresolved A",
+      "type": "array"
+     },
+     "unresolved_b": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Unresolved B",
+      "type": "array"
+     }
+    },
+    "required": [
+     "shared",
+     "a_only",
+     "b_only",
+     "unresolved_a",
+     "unresolved_b"
+    ],
+    "title": "IngredientDiff",
+    "type": "object"
+   },
+   "NormalizationMethod": {
+    "enum": [
+     "exact",
+     "alias_component",
+     "fuzzy",
+     "unresolved"
+    ],
+    "title": "NormalizationMethod",
+    "type": "string"
+   },
+   "NormalizedIngredient": {
+    "additionalProperties": false,
+    "properties": {
+     "position": {
+      "title": "Position",
+      "type": "integer"
+     },
+     "raw": {
+      "title": "Raw",
+      "type": "string"
+     },
+     "canonical_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Canonical Id"
+     },
+     "inci_name": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Inci Name"
+     },
+     "function_classes": {
+      "default": [],
+      "items": {
+       "type": "string"
+      },
+      "title": "Function Classes",
+      "type": "array"
+     },
+     "method": {
+      "$ref": "#/components/schemas/NormalizationMethod"
+     },
+     "confidence": {
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Confidence",
+      "type": "number"
+     },
+     "review_status": {
+      "$ref": "#/components/schemas/ReviewStatus"
+     },
+     "stated_role": {
+      "default": "listed",
+      "title": "Stated Role",
+      "type": "string"
+     },
+     "concentration_pct": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Concentration Pct"
+     },
+     "is_key_active": {
+      "default": false,
+      "title": "Is Key Active",
+      "type": "boolean"
+     },
+     "candidate": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Candidate"
+     },
+     "candidate_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Candidate Id"
+     },
+     "candidate_score": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "default": null,
+      "title": "Candidate Score"
+     }
+    },
+    "required": [
+     "position",
+     "raw",
+     "canonical_id",
+     "inci_name",
+     "method",
+     "confidence",
+     "review_status"
+    ],
+    "title": "NormalizedIngredient",
+    "type": "object"
+   },
+   "ObservationView": {
+    "additionalProperties": false,
+    "properties": {
+     "characteristic": {
+      "title": "Characteristic",
+      "type": "string"
+     },
+     "label": {
+      "title": "Label",
+      "type": "string"
+     },
+     "confidence": {
+      "title": "Confidence",
+      "type": "number"
+     },
+     "confidence_level": {
+      "$ref": "#/components/schemas/ConfidenceLevel"
+     },
+     "severity": {
+      "$ref": "#/components/schemas/skinsync__domain__skin__Severity"
+     },
+     "low_confidence": {
+      "title": "Low Confidence",
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "characteristic",
+     "label",
+     "confidence",
+     "confidence_level",
+     "severity",
+     "low_confidence"
+    ],
+    "title": "ObservationView",
+    "type": "object"
+   },
+   "PriceObservation": {
+    "additionalProperties": false,
+    "properties": {
+     "amount": {
+      "exclusiveMinimum": 0,
+      "title": "Amount",
+      "type": "number"
+     },
+     "currency": {
+      "maxLength": 3,
+      "minLength": 3,
+      "title": "Currency",
+      "type": "string"
+     },
+     "seller": {
+      "title": "Seller",
+      "type": "string"
+     },
+     "source": {
+      "title": "Source",
+      "type": "string"
+     },
+     "observed_at": {
+      "format": "date",
+      "title": "Observed At",
+      "type": "string"
+     },
+     "available": {
+      "default": true,
+      "title": "Available",
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "amount",
+     "currency",
+     "seller",
+     "source",
+     "observed_at"
+    ],
+    "title": "PriceObservation",
+    "type": "object"
+   },
+   "PriceState": {
+    "enum": [
+     "fresh",
+     "stale",
+     "unavailable"
+    ],
+    "title": "PriceState",
+    "type": "string"
+   },
+   "RankedAlternative": {
+    "additionalProperties": false,
+    "properties": {
+     "product_id": {
+      "title": "Product Id",
+      "type": "string"
+     },
+     "name": {
+      "title": "Name",
+      "type": "string"
+     },
+     "brand": {
+      "title": "Brand",
+      "type": "string"
+     },
+     "rank": {
+      "title": "Rank",
+      "type": "integer"
+     },
+     "score": {
+      "title": "Score",
+      "type": "number"
+     },
+     "dimensions": {
+      "items": {
+       "$ref": "#/components/schemas/Dimension"
+      },
+      "title": "Dimensions",
+      "type": "array"
+     },
+     "reasons": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Reasons",
+      "type": "array"
+     },
+     "differences": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Differences",
+      "type": "array"
+     },
+     "price_state": {
+      "$ref": "#/components/schemas/PriceState"
+     },
+     "price": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/PriceObservation"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "price_delta_pct": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Price Delta Pct"
+     },
+     "data_confidence": {
+      "title": "Data Confidence",
+      "type": "number"
+     },
+     "missing_data": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Missing Data",
+      "type": "array"
+     }
+    },
+    "required": [
+     "product_id",
+     "name",
+     "brand",
+     "rank",
+     "score",
+     "dimensions",
+     "reasons",
+     "differences",
+     "price_state",
+     "price",
+     "price_delta_pct",
+     "data_confidence",
+     "missing_data"
+    ],
+    "title": "RankedAlternative",
+    "type": "object"
+   },
+   "ReviewStatus": {
+    "enum": [
+     "auto_accepted",
+     "needs_review",
+     "confirmed",
+     "rejected"
+    ],
+    "title": "ReviewStatus",
+    "type": "string"
+   },
+   "SkinResult": {
+    "additionalProperties": false,
+    "properties": {
+     "skin_type": {
+      "$ref": "#/components/schemas/SkinType"
+     },
+     "observations": {
+      "items": {
+       "$ref": "#/components/schemas/ObservationView"
+      },
+      "title": "Observations",
+      "type": "array"
+     },
+     "recommendations": {
+      "items": {
+       "$ref": "#/components/schemas/ConcernRecommendation"
+      },
+      "title": "Recommendations",
+      "type": "array"
+     },
+     "unmapped_observations": {
+      "items": {
+       "type": "string"
+      },
+      "title": "Unmapped Observations",
+      "type": "array"
+     },
+     "model_version": {
+      "title": "Model Version",
+      "type": "string"
+     },
+     "is_demo_model": {
+      "title": "Is Demo Model",
+      "type": "boolean"
+     },
+     "medical_boundary": {
+      "default": "These are estimates of visible cosmetic features based on one photo. Lighting, camera quality, makeup, filters and angle all affect them. This is not a medical diagnosis and offers no treatment. For persistent or concerning skin issues, consult a qualified professional.",
+      "title": "Medical Boundary",
+      "type": "string"
+     }
+    },
+    "required": [
+     "skin_type",
+     "observations",
+     "recommendations",
+     "unmapped_observations",
+     "model_version",
+     "is_demo_model"
+    ],
+    "title": "SkinResult",
+    "type": "object"
+   },
+   "SkinType": {
+    "enum": [
+     "dry",
+     "oily",
+     "combination",
+     "normal",
+     "sensitive",
+     "unsure"
+    ],
+    "title": "SkinType",
+    "type": "string"
+   },
+   "skinsync__domain__enums__Severity": {
+    "enum": [
+     "info",
+     "caution",
+     "strong_caution"
+    ],
+    "title": "Severity",
+    "type": "string"
+   },
+   "skinsync__domain__skin__Severity": {
+    "enum": [
+     "mild",
+     "moderate",
+     "pronounced"
+    ],
+    "title": "Severity",
+    "type": "string"
+   }
+  }
+ }
+}

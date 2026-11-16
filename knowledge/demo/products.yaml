@@ -1,0 +1,16 @@
+# Fictional products and prices (INR). Prices are DEMO values, not observations of any market.
+fixture: true
+products:
+  - {ref: demo-001, brand: "Demo Brand Alpha", name: "DEMO Renewal Night Serum", category: serum, key_actives: [demo-retinal-x], ingredients: "DEMO BASE AQUA, DEMO GLYCEROL-G, DEMO RETINAL-X, DEMO EMOLLIENT-E", price: 1499}
+  - {ref: demo-002, brand: "Demo Brand Beta",  name: "DEMO Smooth Acid Toner",   category: serum, key_actives: [demo-acid-y], ingredients: "DEMO BASE AQUA, DEMO ACID-Y, DEMO GLYCEROL-G, DEMO CICA-C", price: 899}
+  - {ref: demo-003, brand: "Demo Brand Gamma", name: "DEMO Clear Spot Gel",      category: serum, key_actives: [demo-peroxide-z], ingredients: "DEMO BASE AQUA, DEMO PEROXIDE-Z, DEMO GLYCEROL-G", price: 549}
+  - {ref: demo-004, brand: "Demo Brand Beta",  name: "DEMO Balance Niacin Serum", category: serum, key_actives: [demo-amide-n], ingredients: "DEMO BASE AQUA, DEMO AMIDE-N, DEMO GLYCEROL-G, DEMO HYALO-H", price: 699}
+  - {ref: demo-005, brand: "Demo Brand Delta", name: "DEMO Budget Balance Serum", category: serum, key_actives: [demo-amide-n], ingredients: "DEMO BASE AQUA, DEMO AMIDE-N, DEMO GLYCEROL-G", price: 349}
+  - {ref: demo-006, brand: "Demo Brand Alpha", name: "DEMO Luxe Balance Elixir", category: serum, key_actives: [demo-amide-n], ingredients: "DEMO BASE AQUA, DEMO AMIDE-N, DEMO HYALO-H, DEMO VITA-C, DEMO CICA-C", price: 2499}
+  - {ref: demo-007, brand: "Demo Brand Gamma", name: "DEMO Bright C Serum",      category: serum, key_actives: [demo-vita-c], ingredients: "DEMO BASE AQUA, DEMO VITA-C, DEMO GLYCEROL-G, DEMO EMOLLIENT-E", price: 1199}
+  - {ref: demo-008, brand: "Demo Brand Delta", name: "DEMO Double Acid Peel",    category: serum, key_actives: [demo-acid-y, demo-acid-w], ingredients: "DEMO BASE AQUA, DEMO ACID-Y, DEMO ACID-W", price: 799}
+  - {ref: demo-009, brand: "Demo Brand Alpha", name: "DEMO Calm Cica Cream",     category: moisturizer, key_actives: [demo-cica-c], ingredients: "DEMO BASE AQUA, DEMO EMOLLIENT-E, DEMO CICA-C, DEMO OAT-O, DEMO GLYCEROL-G", price: 999}
+  - {ref: demo-010, brand: "Demo Brand Beta",  name: "DEMO Hydra Gel Cream",     category: moisturizer, key_actives: [demo-hyalo-h], ingredients: "DEMO BASE AQUA, DEMO HYALO-H, DEMO GLYCEROL-G, DEMO EMOLLIENT-E", price: 649}
+  - {ref: demo-011, brand: "Demo Brand Delta", name: "DEMO Oat Barrier Cream",   category: moisturizer, key_actives: [demo-oat-o], ingredients: "DEMO BASE AQUA, DEMO OAT-O, DEMO EMOLLIENT-E, DEMO GLYCEROL-G", price: 449}
+  - {ref: demo-012, brand: "Demo Brand Gamma", name: "DEMO Daily Shield SPF",    category: sunscreen, key_actives: [demo-filter-f], ingredients: "DEMO BASE AQUA, DEMO FILTER-F, DEMO EMOLLIENT-E, DEMO GLYCEROL-G", price: 799}
+  - {ref: demo-013, brand: "Demo Brand Alpha", name: "DEMO Mystery Botanical Oil", category: serum, key_actives: [], ingredients: "DEMO EMOLLIENT-E, Demo Unlisted Botanical Extract", price: null}

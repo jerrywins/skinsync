@@ -1,0 +1,6 @@
+fixture: true
+evidence:
+  - {id: DEMO-EV-1, claim: "DEMO: fictional claim linking Demo Retinal-X and Demo Acid-Y.", source_type: fixture, citation: "FIXTURE / DEMO citation 1 (fictional)", strength: moderate}
+  - {id: DEMO-EV-2, claim: "DEMO: fictional claim about doubling Demo Acid-Y.", source_type: fixture, citation: "FIXTURE / DEMO citation 2 (fictional)", strength: limited}
+  - {id: DEMO-EV-3, claim: "DEMO: fictional claim about Demo Peroxide-Z with Demo Retinal-X.", source_type: fixture, citation: "FIXTURE / DEMO citation 3 (fictional)", strength: high}
+  - {id: DEMO-EV-4, claim: "DEMO: fictional mapping support for concern categories.", source_type: fixture, citation: "FIXTURE / DEMO citation 4 (fictional)", strength: moderate}

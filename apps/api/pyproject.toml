@@ -1,0 +1,38 @@
+[project]
+name = "skinsync-api"
+version = "0.1.0"
+requires-python = ">=3.12"
+
+[tool.ruff]
+line-length = 130
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "S", "RUF"]
+ignore = [
+  "S101",   # assert is used in tests
+  "S311",   # random.Random seeds the labelled demo adapter and property tests, not security
+  "S603", "S607",  # tests call psql with fixed arguments
+  "S608",   # SQL fragments are server-defined constants; see docs/security.md "Reviewed SQL construction"
+  "S105", "S106",  # dev-only constants (rejected in prod by config._prod_guard) and test passwords
+  "RUF001", "RUF002", "RUF003",  # intentional typographic characters in user-facing text
+  "E501",
+  "UP042",  # (str, Enum) kept deliberately: Pydantic/JSON serialisation of the API contract
+  "S110", "SIM105",  # fail-open cache/limiter paths are intentional so outages never break core flows (NFR-03)
+]
+
+[tool.ruff.lint.flake8-bugbear]
+extend-immutable-calls = ["fastapi.Depends", "fastapi.Query", "fastapi.File", "fastapi.Form", "fastapi.Header"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S", "B017", "RUF015", "RUF005", "SIM115"]
+
+[tool.bandit]
+exclude_dirs = ["tests"]
+# B608: 12 sites build SQL from server-defined constants only (column lists, fixed WHERE/ORDER fragments,
+# table names from hard-coded dicts). All user values are bound parameters. Reviewed 2026-11-05;
+# list in docs/security.md. Re-review when adding any f-string SQL.
+skips = ["B608"]
+
+[tool.coverage.run]
+branch = true

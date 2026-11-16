@@ -1,0 +1,13 @@
+# Ingredient master additions. Names and aliases are nomenclature and are always loaded (so labels are
+# recognised). Function classes are applied ONLY when review_status is `reviewed`.
+# DRAFTED BY CLAUDE (AI): review_status draft; a reviewer must confirm names, aliases and classes.
+ingredients:
+  - {id: tretinoin, inci_name: TRETINOIN, aliases: [retinoic acid, all-trans retinoic acid], function_classes: [retinoid], review_status: draft}
+  - {id: adapalene, inci_name: ADAPALENE, aliases: [], function_classes: [retinoid], review_status: draft}
+  - {id: benzoyl-peroxide, inci_name: BENZOYL PEROXIDE, aliases: [], function_classes: [acne-monograph-active], review_status: draft}
+  - {id: sulfur, inci_name: SULFUR, aliases: [sulphur], function_classes: [acne-monograph-active], review_status: draft}
+  - {id: resorcinol, inci_name: RESORCINOL, aliases: [], function_classes: [acne-monograph-active], review_status: draft}
+  - {id: mandelic-acid, inci_name: MANDELIC ACID, aliases: [], function_classes: [alpha-hydroxy-acid], review_status: draft}
+  - {id: salicylic-acid, inci_name: SALICYLIC ACID, aliases: [], function_classes: [beta-hydroxy-acid, acne-monograph-active], review_status: draft}
+  - {id: glycolic-acid, inci_name: GLYCOLIC ACID, aliases: [], function_classes: [alpha-hydroxy-acid], review_status: draft}
+  - {id: lactic-acid, inci_name: LACTIC ACID, aliases: [], function_classes: [alpha-hydroxy-acid], review_status: draft}

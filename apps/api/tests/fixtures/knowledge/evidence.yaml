@@ -1,0 +1,13 @@
+# FICTIONAL TEST DATA. Not science. Never loadable as real knowledge.
+fixture: true
+evidence:
+  - id: EV-FIX-001
+    claim: "FIXTURE: TEST_ACTIVE_A combined with TEST_EXFOLIANT_B is flagged for test purposes."
+    source_type: fixture
+    citation: "FIXTURE citation 1 (fictional)"
+    strength: moderate
+  - id: EV-FIX-002
+    claim: "FIXTURE: two TEST_ACTIVE class ingredients together are flagged for test purposes."
+    source_type: fixture
+    citation: "FIXTURE citation 2 (fictional)"
+    strength: limited

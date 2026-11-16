@@ -1,0 +1,59 @@
+# SkinSync evidence records. Each citation was checked at its source on 2026-11-05 (see RESEARCH_NOTES.md).
+# DRAFTED BY CLAUDE (AI). A qualified team reviewer must verify each claim and its strength grade,
+# then set `reviewer`, before any rule citing it can be published.
+# source_type: regulatory | peer_reviewed | professional_guidance | manufacturer | expert_curated
+# strength:    high | moderate | limited | insufficient | unknown
+evidence:
+  - id: EV-0001
+    claim: >-
+      In a laboratory study, tretinoin 0.025% gel mixed with a 10% benzoyl peroxide lotion and exposed to light
+      degraded by more than 50% within about 2 hours and about 95% within 24 hours; adapalene 0.1% gel stayed stable.
+    source_type: peer_reviewed
+    citation: >-
+      Chemical stability of adapalene and tretinoin when combined with
+      benzoyl peroxide in presence and in absence of visible light and ultraviolet radiation.
+      Br J Dermatol. 1998;139 Suppl 52:8-11. doi:10.1046/j.1365-2133.1998.1390s2008.x. PMID 9990414.
+    strength: limited
+    publication_date: 1998-10-01
+    retrieved_at: 2026-11-05
+    notes: "In vitro mixing study (single study). Evidence about loss of tretinoin, not about skin safety. Authors not recorded here: reviewer to add from PubMed 9990414."
+
+  - id: EV-0002
+    claim: >-
+      For over-the-counter topical acne drug products, US labelling must warn that skin irritation and dryness is
+      more likely if another topical acne medication is used at the same time, and that if irritation occurs only
+      one topical acne medication should be used at a time.
+    source_type: regulatory
+    citation: "US Code of Federal Regulations, 21 CFR 333.350(c)(1)(ii), Topical acne drug products for over-the-counter human use: labeling. https://www.law.cornell.edu/cfr/text/21/333.350"
+    strength: moderate
+    retrieved_at: 2026-11-05
+    notes: "Applies to monograph acne actives (benzoyl peroxide, resorcinol, salicylic acid, sulfur). Reviewer to confirm scope against 21 CFR 333.310."
+
+  - id: EV-0003
+    claim: >-
+      The Differin (adapalene 0.1%) Drug Facts label states that irritation is more likely when using more than one
+      topical acne medication at a time.
+    source_type: manufacturer
+    citation: "Differin Gel (adapalene gel 0.1%) OTC Drug Facts label, Warnings section. https://otclabels.com/lib/otc/otc-meds/differin/"
+    strength: moderate
+    retrieved_at: 2026-11-05
+
+  - id: EV-0004
+    claim: >-
+      The US prescribing label for tretinoin cream advises caution with concomitant topical medication and medicated
+      or abrasive cleansers, and particular caution with preparations containing sulfur, resorcinol or salicylic acid.
+    source_type: regulatory
+    citation: "TRETINOIN cream, prescribing information, Precautions: Drug Interactions (DailyMed setid 5e3fb8ea-234c-4be2-95a7-d139e069cf98, revised 03/2026). https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5e3fb8ea-234c-4be2-95a7-d139e069cf98"
+    strength: moderate
+    retrieved_at: 2026-11-05
+
+  - id: EV-0005
+    claim: >-
+      FDA states that alpha hydroxy acids increase UV sensitivity of the skin, that more serious adverse reactions
+      occur most often with products causing the greatest degree of exfoliation, and that the Cosmetic Ingredient
+      Review found glycolic and lactic acid products safe at 10% or less with a final pH of 3.5 or greater.
+    source_type: regulatory
+    citation: "US Food and Drug Administration. Alpha Hydroxy Acids (content current as of 11/22/2022). https://www.fda.gov/cosmetics/cosmetic-ingredients/alpha-hydroxy-acids"
+    strength: limited
+    retrieved_at: 2026-11-05
+    notes: "Supports care with heavy exfoliation in general; it does not study pairs of products. Graded limited for that reason."

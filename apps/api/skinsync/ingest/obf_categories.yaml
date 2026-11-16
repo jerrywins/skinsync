@@ -1,0 +1,36 @@
+# Maps Open Beauty Facts categories_tags to SkinSync categories. First match wins,
+# so specific categories come before general ones. Products carrying any `exclude`
+# tag (makeup, hair, oral care...) are skipped. Edit freely; re-run the importer.
+exclude:
+  - en:makeup
+  - en:face-makeup
+  - en:eyes-makeup
+  - en:lip-makeup
+  - en:lip-cosmetics
+  - en:lipsticks
+  - en:bb-creams
+  - en:eyeshadows
+  - en:eyeliners
+  - en:eye-pencils
+  - en:nail-makeup
+  - en:hair
+  - en:shampoos
+  - en:toothpastes
+  - en:deodorants
+  - en:perfumes
+  - en:shower-gels
+  - en:hydro-alcoholic-gels
+  - en:medicine
+categories:
+  - {id: sunscreen,   parent: face, label: Sunscreen,   tags: [en:facial-sunscreens, en:sunscreen, en:in-sun-protections, en:suncare]}
+  - {id: serum,       parent: face, label: Serum,       tags: [en:serum, en:face-serum]}
+  - {id: face_mask,   parent: face, label: Face mask,   tags: [en:face-masks]}
+  - {id: exfoliant,   parent: face, label: Exfoliant,   tags: [en:face-scrubs]}
+  - {id: eye_care,    parent: face, label: Eye care,    tags: [en:eye-cream]}
+  - {id: cleanser,    parent: face, label: Cleanser,    tags: [en:face-cleanser, en:face-wash, en:micellar-water, en:cleansing-waters, en:cleansing-milks, en:cleansing-bar, en:eye-makeup-remover, en:cleansers]}
+  - {id: toner,       parent: face, label: Toner,       tags: [en:face-lotions]}
+  - {id: moisturizer, parent: face, label: Moisturizer, tags: [en:facial-creams, en:day-creams, en:night-creams, en:day-and-night-creams, en:anti-wrinkles-creams, en:anti-aging-face-care-products, en:moisturizer, en:moisturizers, en:moisturiser, en:skin-cream]}
+  - {id: lip_care,    parent: lip,  label: Lip care,    tags: [en:lip-balms, en:lip-balm, de:lippenpflege]}
+  - {id: hand_care,   parent: body, label: Hand care,   tags: [en:hand-creams, en:hand-cream]}
+  - {id: body_care,   parent: body, label: Body care,   tags: [en:body-creams, en:body-lotion, en:body-milks, en:body-oils, de:bodylotion]}
+  - {id: face_care,   parent: face, label: Face care (other), tags: [en:face, nl:skincare, en:skin-care, en:skincare, en:creams]}

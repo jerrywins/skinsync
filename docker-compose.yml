@@ -1,0 +1,101 @@
+# SkinSync local stack: `cp .env.example .env && make up && make seed`, then open http://localhost
+name: skinsync
+
+x-api-env: &api-env
+  SKINSYNC_ENV: ${SKINSYNC_ENV:-dev}
+  SKINSYNC_DATABASE_URL: postgresql+psycopg://skinsync:${POSTGRES_PASSWORD}@postgres:5432/skinsync
+  SKINSYNC_REDIS_URL: redis://redis:6379/0
+  SKINSYNC_SECRET_KEY: ${SKINSYNC_SECRET_KEY}
+  SKINSYNC_IMAGE_ENCRYPTION_KEY: ${SKINSYNC_IMAGE_ENCRYPTION_KEY}
+  SKINSYNC_COOKIE_SECURE: ${SKINSYNC_COOKIE_SECURE:-false}
+  SKINSYNC_CORS_ORIGINS: '["${PUBLIC_BASE_URL:-http://localhost}"]'
+  SKINSYNC_PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-http://localhost}
+  SKINSYNC_DEMO_MODE: ${SKINSYNC_DEMO_MODE:-false}
+  SKINSYNC_SKIN_MODEL_ADAPTER: ${SKINSYNC_SKIN_MODEL_ADAPTER:-heuristic}
+  SKINSYNC_SMTP_HOST: ${SKINSYNC_SMTP_HOST:-mailpit}
+  SKINSYNC_SMTP_PORT: ${SKINSYNC_SMTP_PORT:-1025}
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: skinsync
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: skinsync
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U skinsync -d skinsync"]
+      interval: 5s
+      retries: 20
+    ports: ["127.0.0.1:5432:5432"]
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes: [redisdata:/data]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      retries: 20
+
+  api:
+    build: { context: ., dockerfile: apps/api/Dockerfile }
+    environment: *api-env
+    volumes: [storage:/data/storage]
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+
+  worker:
+    build: { context: ., dockerfile: apps/api/Dockerfile }
+    command: ["python", "-m", "skinsync.worker"]
+    environment: *api-env
+    volumes: [storage:/data/storage]
+    depends_on:
+      api: { condition: service_healthy }
+    healthcheck:
+      disable: true
+
+  web:
+    build: { context: ., dockerfile: apps/web/Dockerfile }
+    environment:
+      API_INTERNAL_URL: http://api:8000
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-http://localhost}
+    depends_on:
+      api: { condition: service_healthy }
+
+  caddy:
+    image: caddy:2-alpine
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:-:80}
+    ports: ["80:80", "443:443"]
+    volumes:
+      - ./infra/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddydata:/data
+    depends_on: [web, api]
+
+  mailpit:  # dev mail catcher: http://localhost:8025
+    image: axllent/mailpit:v1.27
+    ports: ["127.0.0.1:8025:8025"]
+
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    profiles: [observability]
+    volumes: [./infra/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro]
+    ports: ["127.0.0.1:9090:9090"]
+
+  grafana:
+    image: grafana/grafana:12.4.14
+    profiles: [observability]
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-change-me}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    volumes: [./infra/grafana/provisioning:/etc/grafana/provisioning:ro]
+    ports: ["127.0.0.1:3001:3000"]
+    depends_on: [prometheus]
+
+volumes:
+  pgdata: {}
+  redisdata: {}
+  storage: {}
+  caddydata: {}

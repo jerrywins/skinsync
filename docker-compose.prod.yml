@@ -1,0 +1,34 @@
+# Production-like override: `docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d`
+# The API refuses to start with dev secrets, insecure cookies or demo mode in prod.
+services:
+  postgres:
+    ports: !reset []
+    restart: unless-stopped
+  redis:
+    restart: unless-stopped
+  api:
+    environment:
+      SKINSYNC_ENV: prod
+      SKINSYNC_COOKIE_SECURE: "true"
+      SKINSYNC_DEMO_MODE: "false"
+      SKINSYNC_SMTP_HOST: ${SKINSYNC_SMTP_HOST:?set a real SMTP host}
+    read_only: true
+    tmpfs: [/tmp]
+    restart: unless-stopped
+  worker:
+    environment:
+      SKINSYNC_ENV: prod
+      SKINSYNC_COOKIE_SECURE: "true"
+      SKINSYNC_DEMO_MODE: "false"
+      SKINSYNC_SMTP_HOST: ${SKINSYNC_SMTP_HOST:?set a real SMTP host}
+    read_only: true
+    tmpfs: [/tmp]
+    restart: unless-stopped
+  web:
+    read_only: true
+    tmpfs: [/tmp]
+    restart: unless-stopped
+  caddy:
+    restart: unless-stopped
+  mailpit:
+    profiles: [dev-only]

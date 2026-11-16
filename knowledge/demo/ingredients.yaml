@@ -1,0 +1,15 @@
+fixture: true
+ingredients:
+  - {id: demo-base-aqua, inci_name: "DEMO BASE AQUA", function_classes: [demo-solvent-class]}
+  - {id: demo-retinal-x, inci_name: "DEMO RETINAL-X", function_classes: [demo-retinoid-class]}
+  - {id: demo-acid-y, inci_name: "DEMO ACID-Y", function_classes: [demo-exfoliant-class]}
+  - {id: demo-acid-w, inci_name: "DEMO ACID-W", function_classes: [demo-exfoliant-class]}
+  - {id: demo-peroxide-z, inci_name: "DEMO PEROXIDE-Z", function_classes: [demo-balancing-class]}
+  - {id: demo-amide-n, inci_name: "DEMO AMIDE-N", function_classes: [demo-balancing-class, demo-brightening-class]}
+  - {id: demo-vita-c, inci_name: "DEMO VITA-C", function_classes: [demo-brightening-class]}
+  - {id: demo-glycerol-g, inci_name: "DEMO GLYCEROL-G", function_classes: [demo-humectant-class]}
+  - {id: demo-hyalo-h, inci_name: "DEMO HYALO-H", function_classes: [demo-humectant-class]}
+  - {id: demo-cica-c, inci_name: "DEMO CICA-C", function_classes: [demo-soothing-class]}
+  - {id: demo-oat-o, inci_name: "DEMO OAT-O", function_classes: [demo-soothing-class]}
+  - {id: demo-filter-f, inci_name: "DEMO FILTER-F", function_classes: [demo-uv-filter-class]}
+  - {id: demo-emollient-e, inci_name: "DEMO EMOLLIENT-E", function_classes: [demo-emollient-class]}

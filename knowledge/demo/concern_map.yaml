@@ -1,0 +1,12 @@
+fixture: true
+mappings:
+  - {observation: visible_shine, concern_category: "DEMO oil balance", ingredient_classes: [demo-balancing-class], intended_role: "DEMO: fictional balancing role", evidence_ids: [DEMO-EV-4]}
+  - {observation: visible_pores, concern_category: "DEMO pore appearance", ingredient_classes: [demo-exfoliant-class], intended_role: "DEMO: fictional smoothing role", evidence_ids: [DEMO-EV-4]}
+  - {observation: visible_texture, concern_category: "DEMO texture", ingredient_classes: [demo-exfoliant-class], intended_role: "DEMO: fictional smoothing role", evidence_ids: [DEMO-EV-4]}
+  - {observation: fine_lines_appearance, concern_category: "DEMO fine lines appearance", ingredient_classes: [demo-retinoid-class], intended_role: "DEMO: fictional renewal role", evidence_ids: [DEMO-EV-4]}
+  - {observation: uneven_tone_appearance, concern_category: "DEMO tone evenness", ingredient_classes: [demo-brightening-class], intended_role: "DEMO: fictional brightening role", evidence_ids: [DEMO-EV-4]}
+  - {observation: dark_spots_appearance, concern_category: "DEMO spot appearance", ingredient_classes: [demo-brightening-class], intended_role: "DEMO: fictional brightening role", evidence_ids: [DEMO-EV-4]}
+  - {observation: visible_redness, concern_category: "DEMO calm appearance", ingredient_classes: [demo-soothing-class], intended_role: "DEMO: fictional soothing role", evidence_ids: [DEMO-EV-4]}
+  - {observation: under_eye_darkness, concern_category: "DEMO under-eye appearance", ingredient_classes: [demo-brightening-class], intended_role: "DEMO: fictional brightening role", evidence_ids: [DEMO-EV-4]}
+  - {observation: visible_blemishes, concern_category: "DEMO blemish appearance", ingredient_classes: [demo-balancing-class], intended_role: "DEMO: fictional balancing role", evidence_ids: [DEMO-EV-4]}
+  - {observation: visible_dryness, concern_category: "DEMO hydration", ingredient_classes: [demo-humectant-class], intended_role: "DEMO: fictional hydrating role", evidence_ids: [DEMO-EV-4]}
