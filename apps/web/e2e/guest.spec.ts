@@ -55,8 +55,10 @@ test("SC-03 cheaper alternatives show prices, dates and reasons", async ({ page 
 
 test("real product search, product page and provenance", async ({ page }) => {
   await page.goto("/products?category=sunscreen");
-  const results = page.locator('section[aria-label="Results"] li a');
-  test.skip((await results.count()) === 0, "no imported real products");
+  // real (non-demo) products only; CI has no Open Beauty Facts import, so there it is skipped
+  await page.locator('section[aria-label="Results"] li').first().waitFor(); // demo or real, the list has loaded
+  const results = page.locator('section[aria-label="Results"] li').filter({ hasNotText: "DEMO" }).locator("a");
+  test.skip((await results.count()) === 0, "no imported real products (run import-obf)");
   const first = results.first();
   const name = (await first.textContent())!;
   await first.click();
@@ -116,5 +118,7 @@ test("static and SEO pages are accessible", async ({ page }) => {
   const robots = await page.request.get("/robots.txt");
   expect(await robots.text()).toContain("Disallow: /analyze/");
   const sitemap = await page.request.get("/sitemap.xml");
-  expect(await sitemap.text()).toContain("/products/");
+  const map = await sitemap.text();
+  expect(map).toContain("/methodology");
+  expect(map.toLowerCase()).not.toContain("/products/demo-"); // demo products are never listed
 });

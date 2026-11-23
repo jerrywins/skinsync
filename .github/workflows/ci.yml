@@ -111,8 +111,8 @@ jobs:
           docker build -f apps/api/Dockerfile -t skinsync-api:ci .
           docker build -f apps/web/Dockerfile -t skinsync-web:ci .
       - name: Image scan (fail on HIGH/CRITICAL)
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@0.35.0
         with: { image-ref: skinsync-api:ci, severity: "HIGH,CRITICAL", exit-code: "1", ignore-unfixed: true }
       - name: Image scan web
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@0.35.0
         with: { image-ref: skinsync-web:ci, severity: "HIGH,CRITICAL", exit-code: "1", ignore-unfixed: true }
