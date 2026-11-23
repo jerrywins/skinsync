@@ -65,6 +65,7 @@ jobs:
     env:
       SKINSYNC_DATABASE_URL: postgresql+psycopg://postgres@localhost:5432/skinsync
       SKINSYNC_DEMO_MODE: "true"
+      SKINSYNC_SKIN_MODEL_ADAPTER: mock
       SKINSYNC_QUEUE_SYNC: "1"
       SKINSYNC_ADMIN_PASSWORD: Adm1n-strong-passphrase
       SKINSYNC_USER_PASSWORD: E2e-Strong-Passphrase-1
