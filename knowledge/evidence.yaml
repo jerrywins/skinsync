@@ -57,3 +57,81 @@ evidence:
     strength: limited
     retrieved_at: 2026-11-05
     notes: "Supports care with heavy exfoliation in general; it does not study pairs of products. Graded limited for that reason."
+
+  # ---- Added 2026-11-24 while integrating skincare_ingredient_compatibility_dataset.csv (team-supplied).
+  # Each source below was opened and read on 2026-11-24; what was read is stated in `notes`.
+  - id: EV-0006
+    claim: >-
+      The American Academy of Dermatology acne guideline strongly recommends benzoyl peroxide and topical
+      retinoids, conditionally recommends azelaic acid and salicylic acid, and gives as good practice combining
+      topical therapies with different mechanisms of action.
+    source_type: professional_guidance
+    citation: >-
+      Guidelines of care for the management of acne vulgaris. J Am Acad Dermatol. 2024;90(5):1006.e1-1006.e30.
+      PMID 38300170. https://pesquisa.bvsalud.org/portal/resource/es/mdl-38300170
+    strength: moderate
+    publication_date: 2024-05-01
+    retrieved_at: 2026-11-24
+    notes: "Read: abstract only (MEDLINE record). Authors not recorded: reviewer to add. The abstract gives no pair-specific irritation or stability findings."
+
+  - id: EV-0007
+    claim: >-
+      A 2025 summary of the AAD acne guideline states that tretinoin degrades when benzoyl peroxide is present,
+      that adapalene, tazarotene and trifarotene can be used concurrently with benzoyl peroxide, that topical
+      retinoid adverse effects include irritation, photosensitivity and burning, that concurrent emollient use
+      mitigates irritation, that adding benzoyl peroxide to topical antibiotic regimens prevents antibiotic
+      resistance, and that daily sunscreen should be considered with topical retinoids.
+    source_type: professional_guidance
+    citation: >-
+      Nelson M. Acne Management: Guidelines From the American Academy of Dermatology. Am Fam Physician.
+      2025;112(5):574-576. https://www.aafp.org/pubs/afp/issues/2025/1100/practice-guidelines-acne-management.html
+    strength: moderate
+    publication_date: 2025-11-15
+    retrieved_at: 2026-11-24
+    notes: "Read: full summary page. Secondary source (a journal summary of EV-0006)."
+
+  - id: EV-0008
+    claim: >-
+      In an 8-week, uncontrolled, single-site study of 25 women using a three-product regimen containing a
+      retinoid-lactic acid conjugate (ethyl lactyl retinoate 0.1%) with added lactic acid, no adverse events or
+      tolerability issues were reported.
+    source_type: peer_reviewed
+    citation: >-
+      Katz BE, Lewis J, McHugh L, Pellegrino A, Popescu L. The Tolerability and Efficacy of a Three-product
+      Anti-aging Treatment Regimen in Subjects with Moderate-to-severe Photodamage. J Clin Aesthet Dermatol.
+      2015;8(10):21-26. PMID 26557215, PMCID PMC4633208.
+    strength: limited
+    publication_date: 2015-10-01
+    retrieved_at: 2026-11-24
+    notes: >-
+      Read: full text (PMC). QUALIFYING, not supporting, evidence: a single formulated regimen was tolerated.
+      It does not test retinol, tretinoin, adapalene or tazarotene, and contains no glycolic acid. Authors had
+      commercial ties to the product. The team CSV cited it for retinoid + glycolic acid caution rows.
+
+  - id: EV-0009
+    claim: >-
+      In an 8-week uncontrolled pilot study of a retinoid-lactic acid conjugate (0.1%) with 2% salicylic acid in a
+      three-product acne regimen, 2 of 27 women discontinued because of irritation; facial stinging rose
+      significantly at week 4 and was no longer significant at week 8.
+    source_type: peer_reviewed
+    citation: >-
+      Draelos Z, Lewis J, McHugh L, Pellegrino A, Popescu L. Novel retinoid ester in combination with salicylic
+      acid for the treatment of acne. PMID 26516077.
+    strength: limited
+    retrieved_at: 2026-11-24
+    notes: >-
+      Read: study PDF hosted by a clinic, title matched to PMID 26516077 via PubMed search listing. Journal,
+      volume and pages not confirmed: reviewer to add. Tests a retinoid ester, not retinol/retinal/tazarotene.
+
+  - id: EV-0010
+    claim: >-
+      The US prescribing label for dapsone gel 7.5% states that use with topical benzoyl peroxide may result in a
+      temporary local yellow or orange discoloration of the skin and facial hair.
+    source_type: regulatory
+    citation: >-
+      DAPSONE gel 7.5% prescribing information, section 7.2 Topical Benzoyl Peroxide (Mayne Pharma, revised
+      06/2025). DailyMed setid cbf9e81e-00ef-4218-975e-6a1610b7f1dd.
+      https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cbf9e81e-00ef-4218-975e-6a1610b7f1dd
+    strength: high
+    retrieved_at: 2026-11-24
+    notes: "Read: label section 7.2. High = the label itself states it; the effect is cosmetic and temporary."

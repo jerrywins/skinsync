@@ -77,9 +77,9 @@ alternatives; shelf → compare; routine → pairwise compatibility.
 | Products | 2,557 real skincare products from Open Beauty Facts (ODbL); 1,711 with ingredient lists; 51 tagged India |
 | Ingredients | 700 names observed in OBF data, **unreviewed**, no functions |
 | Recognition | average 76% of listed ingredients recognised; 244 formulations fully recognised |
-| Interaction rules, evidence | **4 draft rules, 5 evidence records** (AI-drafted, real citations, verified at source); version `kv-…-draft`, **publish blocked** until human review (`knowledge/RESEARCH_NOTES.md`) |
+| Interaction rules, evidence | **7 draft rules, 10 evidence records** (3 rules from the team CSV after checking its citations; 25 CSV rows pending a source, `knowledge/review/`) (AI-drafted, real citations, verified at source); version `kv-…-draft`, **publish blocked** until human review (`knowledge/RESEARCH_NOTES.md`) |
 | Concern mappings | **0 real records**: awaiting human scientific review |
-| Ingredient master entries | 9 AI-drafted entries (names/aliases active; function classes inactive until reviewed) |
+| Ingredient master entries | 20 AI-drafted entries (re-matched into existing products by `reresolve`) (names/aliases active; function classes inactive until reviewed) |
 | Prices | **0 real observations** (no licensed source). Dev DB has 2,557 random **TEST** prices (`seed-test-prices`), badged, hidden in staging/prod, removable |
 | Demo data | 13 fictional products, 13 fictional ingredients, 3 rules, 4 evidence records, 10 mappings, fictional prices; isolated and labelled |
 | Licensing | ODbL attribution shipped; share-alike obligations documented (`docs/data-governance.md`) |
@@ -96,7 +96,8 @@ alternatives; shelf → compare; routine → pairwise compatibility.
 | Ruff, Bandit (medium+, with documented B608 skip), pip-audit, npm audit | All clean (re-run 2026-11-05) |
 | Experimental skin adapter | 12 unit tests on synthetic images + 1 API test; UI labels checked by screenshot. **Never run on real face photos** |
 | Load test (NFR-01) | search p95 774 ms, cached compare 151 ms, alternatives 978 ms: all pass |
-| Docker image builds, `make up`, CI workflow, gitleaks, Trivy | **Not executed** (no Docker daemon or GitHub run here) |
+| Docker Compose stack on macOS (Apple Silicon, Docker Desktop) | **Runs** (2026-11-23); first run found and fixed an API startup crash (container path) |
+| GitHub Actions CI: lint, Bandit, pip-audit, tests + coverage, web build, E2E, gitleaks, image builds, Trivy | **All 4 jobs green** (2026-11-23). Fixes needed on the way: Trivy action version, data-independent E2E tests, OS updates and removal of pip/npm from runtime images |
 | Manual screen-reader test, real phone camera, Lighthouse | **Not executed** |
 
 Bugs found and fixed during verification include: fuzzy matching treating different chemicals as the
@@ -135,7 +136,7 @@ unverified until run on a Docker host.
 3. **Prices:** no real source; the TEST prices are random and must be removed (`make remove-test-prices`)
    before anyone treats the dev database as real.
 4. **Indian coverage:** 51 imported products; the team CSV import exists for curation.
-5. **Unverified infrastructure:** Docker images, CI, gitleaks, Trivy, S3/MinIO backend, real SMTP.
+5. **Unverified infrastructure:** S3/MinIO storage backend, real SMTP, a production deployment.
 6. **Not tested:** real-device camera capture, manual screen-reader pass, Lighthouse scores.
 7. **Security gaps:** no MFA; no email-change flow; Sentry-style error reporting not integrated (Prometheus
    metrics and a Grafana dashboard are provided).

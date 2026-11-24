@@ -1,0 +1,74 @@
+csv_row,ingredient_A,ingredient_B,csv_label,csv_evidence_strength,skinsync_outcome,rule,note,citation_check
+2,tretinoin,benzoyl peroxide,FORMULATION_DEPENDENT,High,covered by existing draft rule,R-0001,strengthened with EV-0007; CSV's 'formulation dependent' noted for reviewer,"verified: stability study (EV-0001) | verified, abstract only: AAD 2024 guideline (EV-0006); not pair-specific"
+3,adapalene,benzoyl peroxide,COMPATIBLE,High,covered by existing draft rule,R-0002,CONFLICT: CSV says compatible; R-0002 is an irritation rule from the Differin label. Reviewer decision,verified: stability study (EV-0001) | not opened: general guideline landing page
+4,tazarotene,benzoyl peroxide,COMPATIBLE_WITH_CAUTION,Moderate,no rule: compatible,,EV-0007: tazarotene can be used concurrently with benzoyl peroxide,verified: AAFP 2025 summary of the AAD guideline (EV-0007)
+5,retinol,glycolic acid,CAUTION_IRRITATION,Moderate,new draft rule,R-0005,,MISMATCH: real study of a retinoid-lactic acid conjugate regimen; no retinol/tretinoin/glycolic (EV-0008)
+6,retinol,salicylic acid,CAUTION_IRRITATION,Moderate,new draft rule,R-0006,,MISMATCH: real pilot of a retinoid ester + 2% salicylic acid; not this retinoid (EV-0009)
+7,tretinoin,glycolic acid,CAUTION_IRRITATION,Moderate,new draft rule,R-0005,,MISMATCH: real study of a retinoid-lactic acid conjugate regimen; no retinol/tretinoin/glycolic (EV-0008)
+8,tretinoin,salicylic acid,CAUTION_IRRITATION,Moderate,covered by existing draft rule,R-0003,,MISMATCH: real pilot of a retinoid ester + 2% salicylic acid; not this retinoid (EV-0009)
+9,adapalene,salicylic acid,CAUTION_IRRITATION,Moderate,covered by existing draft rule,R-0002,,MISMATCH: real pilot of a retinoid ester + 2% salicylic acid; not this retinoid (EV-0009) | not opened: general guideline landing page
+10,tazarotene,glycolic acid,CAUTION_IRRITATION,Moderate,new draft rule,R-0005,,MISMATCH: real study of a retinoid-lactic acid conjugate regimen; no retinol/tretinoin/glycolic (EV-0008) | not opened: general guideline landing page
+11,tazarotene,salicylic acid,CAUTION_IRRITATION,Moderate,new draft rule,R-0006,,MISMATCH: real pilot of a retinoid ester + 2% salicylic acid; not this retinoid (EV-0009) | not opened: general guideline landing page
+12,glycolic acid,lactic acid,CAUTION_IRRITATION,Moderate,covered by existing draft rule,R-0004,R-0004 is severity info; CSV says caution. Reviewer decision,MISMATCH: real study of a retinoid-lactic acid conjugate regimen; no retinol/tretinoin/glycolic (EV-0008) | not opened: general guideline landing page
+13,glycolic acid,salicylic acid,CAUTION_IRRITATION,Moderate,covered by existing draft rule,R-0004,R-0004 is severity info; CSV says caution. Reviewer decision,MISMATCH: real pilot of a retinoid ester + 2% salicylic acid; not this retinoid (EV-0009)
+14,lactic acid,salicylic acid,CAUTION_IRRITATION,Moderate,covered by existing draft rule,R-0004,R-0004 is severity info; CSV says caution. Reviewer decision,MISMATCH: real pilot of a retinoid ester + 2% salicylic acid; not this retinoid (EV-0009)
+15,mandelic acid,salicylic acid,CAUTION_IRRITATION,Low,covered by existing draft rule,R-0004,R-0004 is severity info; CSV says caution. Reviewer decision,not opened: general guideline landing page
+16,PHA (gluconolactone),glycolic acid,CAUTION_IRRITATION,Low,pending: no verified source,,,no source given
+17,L-ascorbic acid,benzoyl peroxide,FORMULATION_DEPENDENT,Low,pending: no verified source,,,no source given
+18,L-ascorbic acid,niacinamide,COMPATIBLE,Moderate,no rule: compatible,,,no source given
+19,L-ascorbic acid,retinol,COMPATIBLE_WITH_CAUTION,Moderate,pending: no verified source,,,no source given
+20,L-ascorbic acid,glycolic acid,CAUTION_IRRITATION,Low,pending: no verified source,,,no source given
+21,L-ascorbic acid,salicylic acid,CAUTION_IRRITATION,Low,pending: no verified source,,,no source given
+22,niacinamide,retinol,COMPATIBLE,Moderate,no rule: compatible,,,no source given
+23,niacinamide,salicylic acid,COMPATIBLE_WITH_CAUTION,Moderate,"no rule: irritation from one ingredient on its own, not an interaction",,,not opened: general guideline landing page
+24,niacinamide,glycolic acid,COMPATIBLE_WITH_CAUTION,Moderate,"no rule: irritation from one ingredient on its own, not an interaction",,,not opened: general guideline landing page
+25,niacinamide,hyaluronic acid,COMPATIBLE,High,no rule: compatible,,,no source given
+26,hyaluronic acid,retinol,COMPATIBLE,Moderate,no rule: compatible,,,not opened: general guideline landing page
+27,hyaluronic acid,glycolic acid,COMPATIBLE,Moderate,no rule: compatible,,,no source given
+28,ceramides,retinol,COMPATIBLE,Moderate,no rule: compatible,,,verified: AAFP 2025 summary of the AAD guideline (EV-0007)
+29,ceramides,glycolic acid,COMPATIBLE,Moderate,no rule: compatible,,,no source given
+30,benzoyl peroxide,salicylic acid,CAUTION_IRRITATION,Moderate,covered by existing draft rule,R-0002,,"verified, abstract only: AAD 2024 guideline (EV-0006); not pair-specific"
+31,benzoyl peroxide,azelaic acid,COMPATIBLE_WITH_CAUTION,Moderate,pending: no verified source,,,"verified, abstract only: AAD 2024 guideline (EV-0006); not pair-specific"
+32,adapalene,azelaic acid,COMPATIBLE_WITH_CAUTION,Moderate,pending: no verified source,,,"verified, abstract only: AAD 2024 guideline (EV-0006); not pair-specific"
+33,tretinoin,azelaic acid,COMPATIBLE_WITH_CAUTION,Moderate,pending: no verified source,,,"verified, abstract only: AAD 2024 guideline (EV-0006); not pair-specific"
+34,benzoyl peroxide,dapsone,FORMULATION_DEPENDENT,Moderate,new draft rule,R-0007,verified on the dapsone 7.5% label (EV-0010),"NOT A SOURCE: a directory, not a specific label"
+35,benzoyl peroxide,topical clindamycin,COMPATIBLE,High,no rule: compatible,,EV-0007,"verified, abstract only: AAD 2024 guideline (EV-0006); not pair-specific"
+36,hydroquinone,tretinoin,COMPATIBLE_WITH_CAUTION,High,pending: no verified source,,,"NOT A SOURCE: a directory, not a specific label"
+37,hydroquinone,glycolic acid,CAUTION_IRRITATION,Low,pending: no verified source,,,no source given
+38,kojic acid,glycolic acid,CAUTION_IRRITATION,Low,pending: no verified source,,,no source given
+39,tranexamic acid topical,niacinamide,COMPATIBLE,Low,no rule: compatible,,,no source given
+40,alpha arbutin,L-ascorbic acid,COMPATIBLE_WITH_CAUTION,Low,no rule: compatible,,,no source given
+41,peptides (cosmetic),L-ascorbic acid,FORMULATION_DEPENDENT,Low,pending: no verified source,,,no source given
+42,retinaldehyde,glycolic acid,CAUTION_IRRITATION,Moderate,new draft rule,R-0005,,MISMATCH: real study of a retinoid-lactic acid conjugate regimen; no retinol/tretinoin/glycolic (EV-0008)
+43,retinaldehyde,salicylic acid,CAUTION_IRRITATION,Moderate,new draft rule,R-0006,,MISMATCH: real pilot of a retinoid ester + 2% salicylic acid; not this retinoid (EV-0009)
+44,retinol,lactic acid,CAUTION_IRRITATION,Moderate,new draft rule,R-0005,,MISMATCH: real study of a retinoid-lactic acid conjugate regimen; no retinol/tretinoin/glycolic (EV-0008)
+45,retinol,mandelic acid,CAUTION_IRRITATION,Low,new draft rule,R-0005,,no source given
+46,retinol,benzoyl peroxide,FORMULATION_DEPENDENT,Low,pending: no verified source,,,no source given
+47,adapalene,glycolic acid,CAUTION_IRRITATION,Moderate,new draft rule,R-0005,,not opened: general guideline landing page
+48,tretinoin,lactic acid,CAUTION_IRRITATION,Moderate,new draft rule,R-0005,,MISMATCH: real study of a retinoid-lactic acid conjugate regimen; no retinol/tretinoin/glycolic (EV-0008)
+49,retinyl palmitate,glycolic acid,CAUTION_IRRITATION,Low,new draft rule,R-0005,,no source given
+50,retinyl palmitate,benzoyl peroxide,FORMULATION_DEPENDENT,Low,pending: no verified source,,,no source given
+51,benzoyl peroxide,glycolic acid,CAUTION_IRRITATION,Moderate,pending: no verified source,,,not opened: general guideline landing page
+52,benzoyl peroxide,lactic acid,CAUTION_IRRITATION,Moderate,pending: no verified source,,,not opened: general guideline landing page
+53,salicylic acid,azelaic acid,COMPATIBLE_WITH_CAUTION,Moderate,pending: no verified source,,,not opened: general guideline landing page
+54,salicylic acid,sulfur,COMPATIBLE_WITH_CAUTION,Low,covered by existing draft rule,R-0002,,no source given
+55,azelaic acid,glycolic acid,CAUTION_IRRITATION,Moderate,pending: no verified source,,,not opened: general guideline landing page
+56,azelaic acid,niacinamide,COMPATIBLE,Moderate,no rule: compatible,,,no source given
+57,azelaic acid,hyaluronic acid,COMPATIBLE,Moderate,no rule: compatible,,,no source given
+58,niacinamide,benzoyl peroxide,COMPATIBLE_WITH_CAUTION,Low,"no rule: irritation from one ingredient on its own, not an interaction",,,no source given
+59,hyaluronic acid,salicylic acid,COMPATIBLE,Moderate,no rule: compatible,,,no source given
+60,hyaluronic acid,benzoyl peroxide,COMPATIBLE,Moderate,no rule: compatible,,,no source given
+61,panthenol,retinol,COMPATIBLE,Moderate,no rule: compatible,,,no source given
+62,panthenol,glycolic acid,COMPATIBLE,Low,no rule: compatible,,,no source given
+63,urea,retinol,COMPATIBLE_WITH_CAUTION,Low,pending: no verified source,,,no source given
+64,urea,glycolic acid,CAUTION_IRRITATION,Low,pending: no verified source,,,no source given
+65,kojic acid,niacinamide,COMPATIBLE,Low,no rule: compatible,,,no source given
+66,kojic acid,vitamin C (L-ascorbic acid),COMPATIBLE_WITH_CAUTION,Low,pending: no verified source,,,no source given
+67,tranexamic acid topical,vitamin C (L-ascorbic acid),COMPATIBLE,Low,no rule: compatible,,,no source given
+68,L-ascorbic acid,ferulic acid,COMPATIBLE,High,no rule: compatible,,,title confirmed by search; abstract not read (PubMed blocked automated access)
+69,L-ascorbic acid,vitamin E (tocopherol),COMPATIBLE,High,no rule: compatible,,,title confirmed by search; abstract not read (PubMed blocked automated access)
+70,copper peptides,glycolic acid,FORMULATION_DEPENDENT,Low,pending: no verified source,,,no source given
+71,copper peptides,L-ascorbic acid,FORMULATION_DEPENDENT,Low,pending: no verified source,,,no source given
+72,hydroquinone,benzoyl peroxide,FORMULATION_DEPENDENT,Low,pending: no verified source,,,no source given
+73,hydroquinone,vitamin C (L-ascorbic acid),COMPATIBLE_WITH_CAUTION,Low,pending: no verified source,,,no source given
+74,retinoids,sunscreen,COMPATIBLE,High,no rule: compatible,,,not opened: general guideline landing page

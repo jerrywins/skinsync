@@ -8,6 +8,7 @@
   python -m skinsync.cli import-prices FILE            import price observations (CSV)
   python -m skinsync.cli seed-test-prices              dev/test only: RANDOM labelled prices for unpriced products
   python -m skinsync.cli remove-test-prices            delete every synthetic test price
+  python -m skinsync.cli reresolve                     re-match products' unrecognised ingredients to the master
   python -m skinsync.cli retention                     run the retention cleanup now
 """
 
@@ -43,6 +44,7 @@ def bootstrap() -> None:
         path = Path(get_settings().knowledge_dir) / "ingredients.yaml"
         if path.exists():
             print(f"ingredient file: {catalog.import_ingredient_file(conn, path)}")
+            print(f"re-resolve: {catalog.reresolve_unresolved(conn)}")
     print("bootstrap knowledge version ready")
 
 
@@ -204,6 +206,7 @@ def main(argv=None) -> None:
     p = sub.add_parser("import-prices")
     p.add_argument("file", type=Path)
     sub.add_parser("retention")
+    sub.add_parser("reresolve")
     sub.add_parser("seed-test-prices")
     sub.add_parser("remove-test-prices")
     args = ap.parse_args(argv)
@@ -217,6 +220,9 @@ def main(argv=None) -> None:
         seed_test_prices()
     elif args.cmd == "remove-test-prices":
         remove_test_prices()
+    elif args.cmd == "reresolve":
+        with db.transaction() as conn:
+            print(f"re-resolve: {catalog.reresolve_unresolved(conn)}")
     elif args.cmd == "seed-demo":
         seed_demo()
     elif args.cmd == "import-csv":

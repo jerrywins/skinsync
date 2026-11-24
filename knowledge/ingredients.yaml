@@ -11,3 +11,17 @@ ingredients:
   - {id: salicylic-acid, inci_name: SALICYLIC ACID, aliases: [], function_classes: [beta-hydroxy-acid, acne-monograph-active], review_status: draft}
   - {id: glycolic-acid, inci_name: GLYCOLIC ACID, aliases: [], function_classes: [alpha-hydroxy-acid], review_status: draft}
   - {id: lactic-acid, inci_name: LACTIC ACID, aliases: [], function_classes: [alpha-hydroxy-acid], review_status: draft}
+  # ---- Added 2026-11-24 for the team CSV / Skinzy integration (names needed so rules R-0005..R-0007 can match
+  # product labels). DRAFTED BY CLAUDE (AI): review_status draft.
+  - {id: retinol, inci_name: RETINOL, aliases: [], function_classes: [retinoid], review_status: draft}
+  - {id: retinal, inci_name: RETINAL, aliases: [retinaldehyde], function_classes: [retinoid], review_status: draft}
+  - {id: tazarotene, inci_name: TAZAROTENE, aliases: [], function_classes: [retinoid], review_status: draft}
+  - {id: retinyl-palmitate, inci_name: RETINYL PALMITATE, aliases: [], function_classes: [retinoid], review_status: draft}
+  - {id: hydroxypinacolone-retinoate, inci_name: HYDROXYPINACOLONE RETINOATE, aliases: [], function_classes: [retinoid], review_status: draft}
+  - {id: dapsone, inci_name: DAPSONE, aliases: [], function_classes: [], review_status: draft}
+  - {id: azelaic-acid, inci_name: AZELAIC ACID, aliases: [], function_classes: [], review_status: draft}
+  - {id: kojic-acid, inci_name: KOJIC ACID, aliases: [], function_classes: [], review_status: draft}
+  - {id: hydroquinone, inci_name: HYDROQUINONE, aliases: [], function_classes: [], review_status: draft}
+  - {id: bakuchiol, inci_name: BAKUCHIOL, aliases: [], function_classes: [], review_status: draft}
+  - {id: ascorbic-acid, inci_name: ASCORBIC ACID, aliases: [l-ascorbic acid], function_classes: [], review_status: draft}
+  - {id: copper-tripeptide-1, inci_name: COPPER TRIPEPTIDE-1, aliases: [copper peptides, ghk-cu], function_classes: [], review_status: draft}

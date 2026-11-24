@@ -174,6 +174,50 @@ def upsert_product(conn: Connection, rec: ProductRecord, master: IngredientMaste
     return "updated" if status == "unchanged" else status
 
 
+def reresolve_unresolved(conn: Connection) -> dict:
+    """Re-match current product versions that still have unrecognised ingredients against today's master.
+
+    Needed after new names are added to the master (e.g. knowledge/ingredients.yaml): products imported earlier
+    keep their old matches otherwise, so rules about the new ingredients would never fire on them. Only versions
+    with at least one unresolved ingredient are touched; the raw label text is never changed. Returns counts."""
+    master = load_master(conn, max_age_s=0)
+    out = {"checked": 0, "updated": 0, "newly_resolved": 0}
+    for v in db.rows(conn, """SELECT pv.id, pv.raw_ingredients FROM product_versions pv
+                              WHERE pv.is_current AND pv.raw_ingredients IS NOT NULL AND EXISTS
+                                (SELECT 1 FROM product_ingredients pi WHERE pi.product_version_id = pv.id
+                                 AND pi.ingredient_id IS NULL)"""):
+        out["checked"] += 1
+        before = db.scalar(conn, """SELECT count(*) FROM product_ingredients WHERE product_version_id = :v
+                                    AND ingredient_id IS NOT NULL""", v=v["id"])
+        keys = frozenset(r["ingredient_id"] for r in db.rows(
+            conn, """SELECT ingredient_id FROM product_ingredients WHERE product_version_id = :v AND is_key_active
+                     AND ingredient_id IS NOT NULL""", v=v["id"]))
+        normalized = normalize_list(v["raw_ingredients"], master, keys)
+        after = sum(1 for i in normalized if i.resolved)
+        if after <= before:
+            continue
+        save_normalized(conn, v["id"], normalized)
+        db.execute(conn, "UPDATE product_versions SET completeness = :c WHERE id = :v",
+                   c=round(after / len(normalized), 4), v=v["id"])
+        out["updated"] += 1
+        out["newly_resolved"] += after - before
+    if out["updated"]:
+        _clear_comparison_cache()
+    return out
+
+
+def _clear_comparison_cache() -> None:
+    """Cached comparisons are keyed by product version; a re-match changes a version's ingredients in place."""
+    try:
+        from ..security import get_redis
+
+        r = get_redis()
+        for k in r.scan_iter("cmp:*", count=500):
+            r.delete(k)
+    except Exception:  # cache is an optimisation; a stale entry expires on its own
+        pass
+
+
 def save_normalized(conn: Connection, vid, items: list[NormalizedIngredient]) -> None:
     db.execute(conn, "DELETE FROM product_ingredients WHERE product_version_id = :v", v=vid)
     for i in items:

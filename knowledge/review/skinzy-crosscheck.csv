@@ -1,0 +1,63 @@
+ingredient_a,ingredient_b,skinzy_status,skinzy_label,skinzy_page,csv_label,skinsync_outcome,agreement
+Retinol,Retinal,same_class,SAME_CLASS_NOT_COMPATIBILITY,,not in CSV,no rule,only in Skinzy
+Retinol,Granactive Retinoid,same_class,SAME_CLASS_NOT_COMPATIBILITY,,not in CSV,no rule,only in Skinzy
+Retinol,Adapalene,same_class,SAME_CLASS_NOT_COMPATIBILITY,,not in CSV,no rule,only in Skinzy
+Retinol,Tretinoin,same_class,SAME_CLASS_NOT_COMPATIBILITY,,not in CSV,no rule,only in Skinzy
+Retinol,Glycolic Acid (AHA),avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/glycolic-acid-and-retinol,CAUTION_IRRITATION,new draft rule R-0005,Skinzy stricter (avoid)
+Retinol,Lactic Acid (AHA),avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/lactic-acid-and-retinol,CAUTION_IRRITATION,new draft rule R-0005,Skinzy stricter (avoid)
+Retinol,Mandelic Acid (AHA),avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/mandelic-acid-and-retinol,CAUTION_IRRITATION,new draft rule R-0005,Skinzy stricter (avoid)
+Retinol,Salicylic Acid (BHA),avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/retinol-and-salicylic-acid,CAUTION_IRRITATION,new draft rule R-0006,Skinzy stricter (avoid)
+Retinol,Benzoyl Peroxide,avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/benzoyl-peroxide-and-retinol,FORMULATION_DEPENDENT,pending: no verified source,Skinzy stricter (avoid)
+Retinol,Pure Vitamin C,verified_split,USE_IN_SEPARATE_ROUTINES,https://useskinzy.app/combinations/vitamin-c-and-retinol,COMPATIBLE_WITH_CAUTION,pending: no verified source,agree
+Retinol,Niacinamide,verified_ok,COMPATIBLE_IN_SOURCE,https://useskinzy.app/combinations/retinol-and-niacinamide,COMPATIBLE,no rule: compatible,agree
+Retinol,Hyaluronic Acid,verified_ok,COMPATIBLE_IN_SOURCE,https://useskinzy.app/combinations/retinol-and-hyaluronic-acid,COMPATIBLE,no rule: compatible,agree
+Retinol,Ceramide 3,verified_ok,COMPATIBLE_IN_SOURCE,https://useskinzy.app/combinations/retinol-and-ceramide,COMPATIBLE,no rule: compatible,agree
+Retinal,Granactive Retinoid,same_class,SAME_CLASS_NOT_COMPATIBILITY,,not in CSV,no rule,only in Skinzy
+Retinal,Adapalene,same_class,SAME_CLASS_NOT_COMPATIBILITY,,not in CSV,no rule,only in Skinzy
+Retinal,Tretinoin,same_class,SAME_CLASS_NOT_COMPATIBILITY,,not in CSV,no rule,only in Skinzy
+Retinal,Glycolic Acid (AHA),avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/glycolic-acid-and-retinal,CAUTION_IRRITATION,new draft rule R-0005,Skinzy stricter (avoid)
+Retinal,Lactic Acid (AHA),avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/lactic-acid-and-retinal,not in CSV,draft rule R-0005,only in Skinzy
+Retinal,Mandelic Acid (AHA),avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/mandelic-acid-and-retinal,not in CSV,draft rule R-0005,only in Skinzy
+Retinal,Salicylic Acid (BHA),avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/retinal-and-salicylic-acid,CAUTION_IRRITATION,new draft rule R-0006,Skinzy stricter (avoid)
+Retinal,Benzoyl Peroxide,avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/benzoyl-peroxide-and-retinal,not in CSV,no rule,only in Skinzy
+Granactive Retinoid,Adapalene,same_class,SAME_CLASS_NOT_COMPATIBILITY,,not in CSV,no rule,only in Skinzy
+Granactive Retinoid,Tretinoin,same_class,SAME_CLASS_NOT_COMPATIBILITY,,not in CSV,no rule,only in Skinzy
+Granactive Retinoid,Glycolic Acid (AHA),avoid,AVOID_OR_SEPARATE,,not in CSV,draft rule R-0005,only in Skinzy
+Granactive Retinoid,Lactic Acid (AHA),avoid,AVOID_OR_SEPARATE,,not in CSV,draft rule R-0005,only in Skinzy
+Granactive Retinoid,Mandelic Acid (AHA),avoid,AVOID_OR_SEPARATE,,not in CSV,draft rule R-0005,only in Skinzy
+Granactive Retinoid,Salicylic Acid (BHA),avoid,AVOID_OR_SEPARATE,,not in CSV,draft rule R-0006,only in Skinzy
+Granactive Retinoid,Benzoyl Peroxide,avoid,AVOID_OR_SEPARATE,,not in CSV,no rule,only in Skinzy
+Adapalene,Tretinoin,same_class,SAME_CLASS_NOT_COMPATIBILITY,,not in CSV,no rule,only in Skinzy
+Adapalene,Glycolic Acid (AHA),avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/adapalene-and-glycolic-acid,CAUTION_IRRITATION,new draft rule R-0005,Skinzy stricter (avoid)
+Adapalene,Lactic Acid (AHA),avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/adapalene-and-lactic-acid,not in CSV,draft rule R-0005,only in Skinzy
+Adapalene,Mandelic Acid (AHA),avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/adapalene-and-mandelic-acid,not in CSV,draft rule R-0005,only in Skinzy
+Adapalene,Salicylic Acid (BHA),avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/adapalene-and-salicylic-acid,CAUTION_IRRITATION,covered by existing draft rule R-0002,Skinzy stricter (avoid)
+Adapalene,Benzoyl Peroxide,avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/adapalene-and-benzoyl-peroxide,COMPATIBLE,covered by existing draft rule R-0002,"CONFLICT (Skinzy avoid, CSV compatible)"
+Tretinoin,Glycolic Acid (AHA),avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/glycolic-acid-and-tretinoin,CAUTION_IRRITATION,new draft rule R-0005,Skinzy stricter (avoid)
+Tretinoin,Lactic Acid (AHA),avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/lactic-acid-and-tretinoin,CAUTION_IRRITATION,new draft rule R-0005,Skinzy stricter (avoid)
+Tretinoin,Mandelic Acid (AHA),avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/mandelic-acid-and-tretinoin,not in CSV,draft rule R-0005,only in Skinzy
+Tretinoin,Salicylic Acid (BHA),avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/salicylic-acid-and-tretinoin,CAUTION_IRRITATION,covered by existing draft rule R-0003,Skinzy stricter (avoid)
+Tretinoin,Benzoyl Peroxide,avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/benzoyl-peroxide-and-tretinoin,FORMULATION_DEPENDENT,covered by existing draft rule R-0001,Skinzy stricter (avoid)
+Bakuchiol,Glycolic Acid (AHA),caution,USE_WITH_CAUTION,,not in CSV,no rule,only in Skinzy
+Bakuchiol,Lactic Acid (AHA),caution,USE_WITH_CAUTION,,not in CSV,no rule,only in Skinzy
+Bakuchiol,Mandelic Acid (AHA),caution,USE_WITH_CAUTION,,not in CSV,no rule,only in Skinzy
+Bakuchiol,Salicylic Acid (BHA),caution,USE_WITH_CAUTION,,not in CSV,no rule,only in Skinzy
+Glycolic Acid (AHA),Lactic Acid (AHA),same_class,SAME_CLASS_NOT_COMPATIBILITY,,CAUTION_IRRITATION,covered by existing draft rule R-0004,not a compatibility verdict
+Glycolic Acid (AHA),Mandelic Acid (AHA),same_class,SAME_CLASS_NOT_COMPATIBILITY,,not in CSV,"draft rule R-0004, R-0004",only in Skinzy
+Glycolic Acid (AHA),Benzoyl Peroxide,avoid,AVOID_OR_SEPARATE,,CAUTION_IRRITATION,pending: no verified source,Skinzy stricter (avoid)
+Glycolic Acid (AHA),Pure Vitamin C,avoid,AVOID_OR_SEPARATE,,CAUTION_IRRITATION,pending: no verified source,Skinzy stricter (avoid)
+Lactic Acid (AHA),Mandelic Acid (AHA),same_class,SAME_CLASS_NOT_COMPATIBILITY,,not in CSV,"draft rule R-0004, R-0004",only in Skinzy
+Lactic Acid (AHA),Benzoyl Peroxide,avoid,AVOID_OR_SEPARATE,,CAUTION_IRRITATION,pending: no verified source,Skinzy stricter (avoid)
+Lactic Acid (AHA),Pure Vitamin C,avoid,AVOID_OR_SEPARATE,,not in CSV,no rule,only in Skinzy
+Mandelic Acid (AHA),Benzoyl Peroxide,avoid,AVOID_OR_SEPARATE,,not in CSV,no rule,only in Skinzy
+Mandelic Acid (AHA),Pure Vitamin C,avoid,AVOID_OR_SEPARATE,,not in CSV,no rule,only in Skinzy
+Salicylic Acid (BHA),Niacinamide,verified_ok,COMPATIBLE_IN_SOURCE,https://useskinzy.app/combinations/niacinamide-and-salicylic-acid,COMPATIBLE_WITH_CAUTION,"no rule: irritation from one ingredient on its own, not an interaction",agree
+Salicylic Acid (BHA),Hyaluronic Acid,verified_ok,COMPATIBLE_IN_SOURCE,https://useskinzy.app/combinations/salicylic-acid-and-hyaluronic-acid,COMPATIBLE,no rule: compatible,agree
+Pure Vitamin C,Niacinamide,verified_ok,COMPATIBLE_IN_SOURCE,https://useskinzy.app/combinations/vitamin-c-and-niacinamide,COMPATIBLE,no rule: compatible,agree
+Pure Vitamin C,Kojic Acid,avoid,AVOID_OR_SEPARATE,https://useskinzy.app/conflicts/vitamin-c-and-kojic-acid,COMPATIBLE_WITH_CAUTION,pending: no verified source,Skinzy stricter (avoid)
+Pure Vitamin C,Hyaluronic Acid,verified_ok,COMPATIBLE_IN_SOURCE,https://useskinzy.app/combinations/vitamin-c-and-hyaluronic-acid,not in CSV,no rule,only in Skinzy
+Pure Vitamin C,Ferulic Acid,verified_ok,COMPATIBLE_IN_SOURCE,https://useskinzy.app/combinations/vitamin-c-and-ferulic-acid,COMPATIBLE,no rule: compatible,agree
+Azelaic Acid,Niacinamide,verified_ok,COMPATIBLE_IN_SOURCE,https://useskinzy.app/combinations/azelaic-acid-and-niacinamide,COMPATIBLE,no rule: compatible,agree
+Niacinamide,Alpha-Arbutin,verified_ok,COMPATIBLE_IN_SOURCE,https://useskinzy.app/combinations/alpha-arbutin-and-niacinamide,not in CSV,no rule,only in Skinzy
+Niacinamide,Tranexamic Acid,verified_ok,COMPATIBLE_IN_SOURCE,https://useskinzy.app/combinations/tranexamic-acid-and-niacinamide,COMPATIBLE,no rule: compatible,agree
+Niacinamide,Hyaluronic Acid,verified_ok,COMPATIBLE_IN_SOURCE,https://useskinzy.app/combinations/niacinamide-and-hyaluronic-acid,COMPATIBLE,no rule: compatible,agree

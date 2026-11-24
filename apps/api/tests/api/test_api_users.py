@@ -228,7 +228,7 @@ def test_admin_routes_require_admin(user, client):
 def test_sc05_knowledge_import_review_publish_and_audit(admin):
     vid = f"kv-test-{uuid.uuid4().hex[:6]}"
     r = admin.post(f"{V}/admin/knowledge-versions", json={"version_id": vid})
-    assert r.status_code == 201 and r.json()["rules"] == 4  # shipped draft rules, all review_status draft
+    assert r.status_code == 201 and r.json()["rules"] == 7  # shipped draft rules, all review_status draft
     bad = admin.post(f"{V}/admin/knowledge-versions/{vid}/transition", json={"to": "published", "reason": "skip review"})
     assert bad.status_code == 409 and bad.json()["code"] == "INVALID_TRANSITION"
     assert admin.post(f"{V}/admin/knowledge-versions/{vid}/transition",
