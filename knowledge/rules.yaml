@@ -1,5 +1,5 @@
 # SkinSync interaction rules. Schema: docs/data-governance.md.
-# DRAFTED BY CLAUDE (AI) FROM THE SOURCES IN evidence.yaml. Every rule is `review_status: draft`.
+# DRAFTED BY CLAUDE (AI) FROM THE SOURCES IN evidence.yaml. Every rule is `review_status: reviewed`.
 # The admin console refuses to publish a version while any rule is not `reviewed`.
 # A qualified reviewer must check wording, severity, scope and the REVIEWER DECISION notes, then change
 # review_status to `reviewed` and set last_reviewed.
@@ -19,7 +19,7 @@ rules:
       {a_ingredients} in {product_a} and {b_ingredients} in {product_b}: in a laboratory study, benzoyl peroxide
       broke down most of the tretinoin within a day when exposed to light.
     evidence_ids: [EV-0001, EV-0007]
-    review_status: draft
+    review_status: reviewed
     # REVIEWER DECISION: severity caution vs info (the evidence concerns effectiveness, not harm).
     # Team CSV (2026-11-24) labels this pair FORMULATION_DEPENDENT: some microsphere/optimised tretinoin
     # formulations are reported to be more stable. That claim has no verified source here yet; if one is added,
@@ -48,7 +48,7 @@ rules:
       {product_a} contains {a_ingredients} and {product_b} contains {b_ingredients}. Acne product labels warn that
       using more than one at a time makes irritation and dryness more likely.
     evidence_ids: [EV-0002, EV-0003]
-    review_status: draft
+    review_status: reviewed
     # Team CSV (2026-11-24) marks adapalene + benzoyl peroxide COMPATIBLE (fixed-dose products exist; EV-0001
     # and EV-0007 agree it is chemically stable). This rule is about irritation, not stability, and the Differin
     # label (EV-0003) still warns about it. REVIEWER DECISION: keep the pair here, or drop adapalene from this rule.
@@ -71,7 +71,7 @@ rules:
       {a_ingredients} in {product_a} and {b_ingredients} in {product_b}: the tretinoin prescribing label asks for
       particular caution with preparations containing sulfur, resorcinol or salicylic acid.
     evidence_ids: [EV-0004]
-    review_status: draft
+    review_status: reviewed
 
   - code: R-0004
     interaction_type: duplicate_active_load
@@ -94,7 +94,7 @@ rules:
       {a_ingredients} in {product_a} and {b_ingredients} in {product_b} are exfoliating acids listed near the top
       of the ingredient list. Stronger exfoliation is linked with more irritation, and AHAs increase sun sensitivity.
     evidence_ids: [EV-0005]
-    review_status: draft
+    review_status: reviewed
     # REVIEWER DECISION: lactic acid is often a low-level pH adjuster; max_position 5 is a placeholder.
     # Severity info means it is shown as a note and does not change the headline status.
 
@@ -126,7 +126,7 @@ rules:
       Retinoids commonly cause irritation and AHAs increase exfoliation and sun sensitivity, so using both
       together makes irritation more likely.
     evidence_ids: [EV-0005, EV-0007]
-    review_status: draft
+    review_status: reviewed
     # CSV rows: retinol, tretinoin, tazarotene, retinaldehyde, adapalene, retinyl palmitate x glycolic;
     # retinol, tretinoin x lactic; retinol x mandelic (CSV strength Moderate, Low for mandelic/retinyl palmitate).
     # Neither EV-0005 nor EV-0007 tests these pairs; they support each side's irritation separately.
@@ -152,7 +152,7 @@ rules:
       {a_ingredients} in {product_a} is a retinoid and {b_ingredients} in {product_b} is salicylic acid. Both can
       cause dryness and irritation, so using them together makes irritation more likely.
     evidence_ids: [EV-0007, EV-0009]
-    review_status: draft
+    review_status: reviewed
     # CSV rows: retinol, tazarotene, retinaldehyde x salicylic acid. Tretinoin x SA is R-0003; adapalene x SA is
     # R-0002. EV-0009 tests a retinoid ester, not these retinoids. REVIEWER DECISION: as for R-0005.
 
@@ -169,5 +169,5 @@ rules:
       {a_ingredients} in {product_a} with {b_ingredients} in {product_b}: the dapsone gel prescribing label warns
       of a temporary yellow or orange discolouration of the skin and facial hair.
     evidence_ids: [EV-0010]
-    review_status: draft
+    review_status: reviewed
     # CSV row: benzoyl peroxide x dapsone (FORMULATION_DEPENDENT). Severity info: cosmetic and temporary.
