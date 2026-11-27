@@ -14,6 +14,7 @@ everyone".
 ## Run it (Docker)
 
 On a Mac, follow the step-by-step guide in [`docs/MAC_DOCKER_GUIDE.md`](docs/MAC_DOCKER_GUIDE.md).
+To put it on the internet with HTTPS (Azure for Students, free credit): [`docs/AZURE_DEPLOYMENT.md`](docs/AZURE_DEPLOYMENT.md).
 
 ```bash
 cp .env.example .env      # set the passwords and keys (instructions inside)

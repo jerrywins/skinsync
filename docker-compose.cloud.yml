@@ -1,0 +1,26 @@
+# Cloud demo override (one Linux VM, e.g. Azure). Use with:
+#   docker compose -f docker-compose.yml -f docker-compose.cloud.yml up -d --build
+# "staging" = real HTTPS, secure cookies and strong keys are enforced (the API refuses to start otherwise),
+# while the labelled fictional demo data stays allowed. Guide: docs/AZURE_DEPLOYMENT.md
+x-cloud-env: &cloud-env
+  SKINSYNC_ENV: staging
+  SKINSYNC_COOKIE_SECURE: "true"
+
+services:
+  postgres:
+    ports: !reset []          # database not reachable from outside the VM, not even on localhost
+    restart: unless-stopped
+  redis:
+    restart: unless-stopped
+  api:
+    environment: *cloud-env
+    restart: unless-stopped
+  worker:
+    environment: *cloud-env
+    restart: unless-stopped
+  web:
+    restart: unless-stopped
+  caddy:
+    restart: unless-stopped   # SITE_ADDRESS (in .env) = the VM's DNS name -> automatic Let's Encrypt HTTPS
+  mailpit:
+    restart: unless-stopped   # still bound to 127.0.0.1 only; reach it with an SSH tunnel
